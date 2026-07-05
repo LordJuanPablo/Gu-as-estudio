@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aprendamos del “Dios de todo consuelo”</title>
+<style>
+/* === RESET & BASE === */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:18px}
+body{
+  background:#F5F7FF;color:#252638;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+h1,h2,.q-txt,.ctitle,.ig-ttl,.idx-ttl,.idx-toggle-text{
+  font-family:Georgia,"Times New Roman",serif;
+}
+
+/* === TOKENS === */
+:root{
+  --pri:#4A3FA0; --pri-dk:#372F7A; --pri-bg:#ECE9FB;
+  --line:#DDE3F5; --muted:#636882; --card:#FFFFFF;
+  --r:14px; --sh:0 2px 8px rgba(37,38,56,.10);
+
+  --c-dir-bg:#E5F0FF; --c-dir:#1B5CB0;
+  --c-com-bg:#F0E9FB; --c-com:#6A3FAD;
+  --c-apl-bg:#FFF3E0; --c-apl:#C26000;
+  --c-ana-bg:#E4FAF1; --c-ana:#1A7A54;
+  --c-eje-bg:#FDE8F0; --c-eje:#C2285A;
+  --c-tex-bg:#FFFCE0; --c-tex:#8A6800;
+}
+
+/* === HERO === */
+.hero{
+  background:linear-gradient(135deg,#F0EEFE 0%,#E8EDFC 100%);
+  border-bottom:1px solid var(--line);
+  padding:40px 0 32px;
+}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--pri-dk);background:var(--pri-bg);
+  padding:5px 12px;border-radius:999px;border:1px solid #c9c3f0;
+  margin-bottom:14px;
+}
+h1{font-size:clamp(1.8rem,5vw,2.8rem);line-height:1.1;color:#1a1a2e;margin-bottom:6px}
+.sub{color:var(--muted);font-size:.95rem;margin-bottom:18px}
+.sub b{color:#252638}
+
+.verse-box{
+  background:#fff;border:1px solid var(--line);border-left:5px solid var(--pri);
+  border-radius:12px;padding:14px 18px;margin-bottom:18px;box-shadow:var(--sh);
+}
+.verse-box .vtag{
+  font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--pri-dk);display:block;margin-bottom:4px;
+}
+.verse-box p{font-style:italic;color:#252638}
+
+.howto-box{
+  display:flex;gap:12px;align-items:flex-start;
+  background:#fafbff;border:1px dashed #c4cdf5;border-radius:10px;
+  padding:12px 16px;margin-bottom:18px;font-size:.95rem;color:#4b4f6a;
+}
+.howto-box .bi{font-size:1.3rem;line-height:1;flex-shrink:0}
+
+/* Legend */
+.leg-wrap{margin-bottom:20px}
+.leg-ttl{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.leg-row{display:flex;flex-wrap:wrap;gap:7px}
+.leg{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:.82rem;font-weight:700;padding:5px 11px;
+  border-radius:999px;border:1px solid transparent;
+}
+.leg-directa{background:var(--c-dir-bg);color:var(--c-dir);border-color:#c0d8f5}
+.leg-complemento{background:var(--c-com-bg);color:var(--c-com);border-color:#d6c8f5}
+.leg-aplicacion{background:var(--c-apl-bg);color:var(--c-apl);border-color:#f5ddb0}
+.leg-analogia{background:var(--c-ana-bg);color:var(--c-ana);border-color:#b8ecd7}
+.leg-ejemplo{background:var(--c-eje-bg);color:var(--c-eje);border-color:#f5c0d6}
+.leg-texto{background:var(--c-tex-bg);color:var(--c-tex);border-color:#f0e090}
+
+/* Toolbar */
+.toolbar{display:flex;flex-wrap:wrap;gap:9px}
+.btn{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:inherit;font-size:.9rem;font-weight:700;
+  cursor:pointer;border-radius:999px;padding:9px 16px;
+  border:1px solid var(--line);background:#fff;color:#252638;
+  box-shadow:var(--sh);transition:background .15s,transform .1s;
+  -webkit-appearance:none;appearance:none;
+}
+.btn:hover{background:#f0f2ff;transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn:focus{outline:3px solid #b0a8ef;outline-offset:2px}
+.btn.pri{background:var(--pri);color:#fff;border-color:var(--pri-dk)}
+.btn.pri:hover{background:var(--pri-dk)}
+
+/* === STICKY NAV === */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(245,247,255,.96);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:860px;margin:0 auto;
+  padding:9px 20px;display:flex;gap:8px;
+  overflow-x:auto;scrollbar-width:none;
+}
+.nav-inner::-webkit-scrollbar{display:none}
+.chip{
+  flex-shrink:0;text-decoration:none;white-space:nowrap;
+  font-size:.82rem;font-weight:700;
+  color:var(--pri-dk);background:var(--pri-bg);
+  border:1px solid #c9c3f0;padding:6px 12px;border-radius:999px;
+  transition:background .15s,transform .1s;
+}
+.chip:hover{background:#ddd8f8;transform:translateY(-1px)}
+.chip:focus{outline:3px solid #b0a8ef;outline-offset:2px}
+
+/* === MAIN === */
+main.wrap{padding-top:4px;padding-bottom:40px}
+
+/* Index box */
+.ibox{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  box-shadow:var(--sh);margin:22px 0 28px;overflow:hidden;
+}
+.idx-toggle{
+  width:100%;display:flex;align-items:center;justify-content:space-between;
+  background:var(--pri-bg);border:0;border-bottom:1px solid var(--line);
+  font-family:inherit;color:var(--pri-dk);padding:15px 20px;cursor:pointer;
+  -webkit-appearance:none;appearance:none;
+}
+.idx-toggle:focus{outline:3px solid #b0a8ef;outline-offset:-3px}
+.idx-toggle-text{font-size:1rem;font-weight:700;display:flex;align-items:center;gap:7px}
+.idx-arr{transition:transform .2s;font-size:.9rem}
+.ibox.closed .idx-arr{transform:rotate(-90deg)}
+.idx-bd{padding:16px 20px 8px;display:grid;gap:16px}
+.ibox.closed .idx-bd{display:none}
+.ig-ttl{font-size:.9rem;font-weight:700;color:#252638;margin-bottom:7px}
+.ig ul{list-style:none;display:grid;gap:5px}
+.ig ul a{
+  display:flex;align-items:baseline;gap:9px;
+  text-decoration:none;color:#252638;
+  padding:7px 10px;border-radius:9px;
+  transition:background .15s;
+}
+.ig ul a:hover{background:#E8EDFC}
+.ig ul a:focus{outline:3px solid #b0a8ef;outline-offset:1px}
+.idx-n{
+  flex-shrink:0;font-size:.7rem;font-weight:700;color:#fff;
+  background:var(--pri);padding:2px 8px;border-radius:999px;white-space:nowrap;
+}
+.idx-q{font-size:.94rem;line-height:1.4;color:#3e4060}
+
+/* Section */
+.blk{padding:28px 0 4px;scroll-margin-top:66px}
+.s-band{display:flex;align-items:center;gap:11px;margin-bottom:16px}
+.s-ic{
+  width:42px;height:42px;flex-shrink:0;display:grid;place-items:center;
+  font-size:1.2rem;background:var(--pri-bg);border:1px solid #c9c3f0;border-radius:11px;
+}
+.s-band h2{font-size:clamp(1.2rem,3vw,1.65rem);color:var(--pri-dk);font-weight:700;line-height:1.2}
+
+/* Question card */
+.qcard{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  box-shadow:var(--sh);margin-bottom:16px;overflow:hidden;scroll-margin-top:66px;
+}
+.q-hd{
+  width:100%;text-align:left;cursor:pointer;background:transparent;border:0;
+  font-family:inherit;color:#252638;padding:16px 18px 13px;
+  display:grid;grid-template-columns:auto 1fr auto;gap:4px 10px;align-items:start;
+  -webkit-appearance:none;appearance:none;
+}
+.q-hd:focus{outline:3px solid #b0a8ef;outline-offset:-3px}
+.q-num{
+  grid-row:1;grid-column:1;align-self:center;
+  font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  color:#fff;background:var(--pri);padding:4px 10px;border-radius:999px;white-space:nowrap;
+}
+.q-txt{
+  grid-row:1;grid-column:2;align-self:center;
+  font-size:1.08rem;font-weight:600;line-height:1.35;color:#1a1a2e;
+}
+.q-arr{
+  grid-row:1;grid-column:3;align-self:center;
+  color:var(--muted);font-size:.85rem;transition:transform .2s;
+}
+.qcard.closed .q-arr{transform:rotate(-90deg)}
+.q-bd{padding:2px 18px 16px;display:grid;gap:10px}
+.qcard.closed .q-bd{display:none}
+
+/* Answer blocks */
+.ans{border-radius:0 11px 11px 0;padding:13px 15px;border-left:5px solid}
+.ans-lbl{font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  display:flex;align-items:center;gap:5px;margin-bottom:5px}
+.ans p{font-size:1rem;line-height:1.72;color:#252638}
+
+.a-directa{background:var(--c-dir-bg);border-left-color:var(--c-dir)}
+.a-directa .ans-lbl{color:var(--c-dir)}
+.a-complemento{background:var(--c-com-bg);border-left-color:var(--c-com)}
+.a-complemento .ans-lbl{color:var(--c-com)}
+.a-aplicacion{background:var(--c-apl-bg);border-left-color:var(--c-apl)}
+.a-aplicacion .ans-lbl{color:var(--c-apl)}
+.a-analogia{background:var(--c-ana-bg);border-left-color:var(--c-ana)}
+.a-analogia .ans-lbl{color:var(--c-ana)}
+.a-ejemplo{background:var(--c-eje-bg);border-left-color:var(--c-eje)}
+.a-ejemplo .ans-lbl{color:var(--c-eje)}
+.a-texto{background:var(--c-tex-bg);border-left-color:var(--c-tex)}
+.a-texto .ans-lbl{color:var(--c-tex)}
+
+/* Study mode hint */
+.s-hint{display:none;padding:4px 18px 14px;font-style:italic;font-size:.9rem;color:var(--muted)}
+body.study .qcard.closed .s-hint{display:block}
+
+/* Closing */
+.closing{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r);
+  padding:20px 22px;margin-top:24px;box-shadow:var(--sh);
+}
+.ctitle{font-size:1.2rem;font-weight:700;color:var(--pri-dk);margin-bottom:6px}
+.closing p{font-size:1rem;color:#3e4060;line-height:1.7}
+
+footer{padding:24px 0 44px;text-align:center;color:var(--muted);font-size:.82rem}
+
+/* === RESPONSIVE === */
+@media(max-width:560px){
+  html{font-size:17px}
+  .q-hd{grid-template-columns:1fr auto;padding:14px 14px 11px}
+  .q-num{grid-row:1;grid-column:1;justify-self:start;margin-bottom:3px}
+  .q-txt{grid-row:2;grid-column:1/span 2}
+  .q-arr{grid-row:1;grid-column:2}
+  .q-bd,.s-hint{padding-left:14px;padding-right:14px}
+  .wrap{padding:0 14px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;scroll-behavior:auto!important}
+}
+@media print{
+  .nav,.toolbar,.q-arr,.s-hint,.idx-arr{display:none!important}
+  body{background:#fff;font-size:11pt}
+  .hero{background:#fff;padding:0 0 12px}
+  .qcard,.closing,.ibox{box-shadow:none;break-inside:avoid}
+  .ans{break-inside:avoid}
+  .qcard.closed .q-bd,.ibox.closed .idx-bd{display:grid!important}
+}
+
+/* Safari iOS fix */
+.btn, .q-hd, .idx-toggle, .chip {
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+  touch-action: manipulation;
+  -webkit-appearance: none;
+  appearance: none;
+}
+* { -webkit-tap-highlight-color: transparent; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">★ La Atalaya &middot; Estudio del 22 al 28 de junio de 2026</div>
+    <h1>Aprendamos del “Dios de todo consuelo”</h1>
+    <p class="sub"><b>La Atalaya</b> (edición de estudio) &middot; abril de 2026, págs. 20-25</p>
+
+    <div class="verse-box">
+      <span class="vtag">Texto del tema</span>
+      <p>&ldquo;Él nos consuela [...] para que nosotros podamos consolar con el consuelo que recibimos de Dios&rdquo; (2 Corintios 1:4).</p>
+    </div>
+
+    <div class="howto-box">
+      <span class="bi">🧭</span>
+      <p>Cada pregunta se responde desde <b>seis ángulos</b>, cada uno con su propio color.
+      Toca el encabezado de una pregunta para abrirla o cerrarla.</p>
+    </div>
+
+    <div class="leg-wrap">
+      <div class="leg-ttl">Los seis colores</div>
+      <div class="leg-row">
+        <span class="leg leg-directa">🎯 Respuesta directa</span>
+        <span class="leg leg-complemento">🧩 Para complementar</span>
+        <span class="leg leg-aplicacion">🌱 En la vida diaria</span>
+        <span class="leg leg-analogia">🔗 Analogía</span>
+        <span class="leg leg-ejemplo">💡 Ejemplo práctico</span>
+        <span class="leg leg-texto">📖 Texto bíblico y aplicación</span>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <button class="btn pri" id="btnStudy" type="button" onclick="return toggleStudy();" ontouchend="return toggleStudy();">🧠 Modo repaso: <span id="studyLbl">desactivado</span></button>
+      <button class="btn" id="btnAll" type="button" onclick="return toggleAll();" ontouchend="return toggleAll();">↕ Contraer todo</button>
+      <button class="btn" id="btnPrint" type="button" onclick="return doPrint();" ontouchend="return doPrint();">🖨 Imprimir</button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="chip" href="#s-introduccion">🌅 Introducción</a> <a class="chip" href="#s-el-significado-de-consolar-en-">📚 El significado de “consolar” en la Biblia</a> <a class="chip" href="#s-como-consolar-a-los-demas">🤝 Cómo consolar a los demás</a> <a class="chip" href="#s-que-hacer-cuando-nosotros-nece">🫶 Qué hacer cuando nosotros necesitamos consuelo</a> <a class="chip" href="#s-que-responderia-preguntas-de-r">✅ ¿Qué respondería? — Preguntas de repaso</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <div class="ibox" id="indice">
+    <button class="idx-toggle" type="button" onclick="return toggleIdx();" ontouchend="return toggleIdx();">
+      <span class="idx-toggle-text">🔎 Índice de preguntas</span>
+      <span class="idx-arr">&#9660;</span>
+    </button>
+    <div class="idx-bd">
+        <div class="ig">
+          <p class="ig-ttl">🌅 Introducción</p>
+          <ul>
+          <li><a href="#s-introduccion-p1" onclick="return goToCard('s-introduccion-p1');" ontouchend="return goToCard('s-introduccion-p1');" onclick="goToCard('s-introduccion-p1')"><span class="idx-n">1</span><span class="idx-q">¿Por qué debemos consolar a los demás?</span></a></li>
+          </ul>
+        </div>
+        <div class="ig">
+          <p class="ig-ttl">📚 El significado de “consolar” en la Biblia</p>
+          <ul>
+          <li><a href="#s-el-significado-de-consolar-en--p2" onclick="return goToCard('s-el-significado-de-consolar-en--p2');" ontouchend="return goToCard('s-el-significado-de-consolar-en--p2');" onclick="goToCard('s-el-significado-de-consolar-en--p2')"><span class="idx-n">2</span><span class="idx-q">En la Biblia, ¿qué significados puede tener la palabra griega que se ha traducido “consolar”?</span></a></li>
+          <li><a href="#s-el-significado-de-consolar-en--p3" onclick="return goToCard('s-el-significado-de-consolar-en--p3');" ontouchend="return goToCard('s-el-significado-de-consolar-en--p3');" onclick="goToCard('s-el-significado-de-consolar-en--p3')"><span class="idx-n">3</span><span class="idx-q">¿Qué buen ejemplo nos puso Bernabé?</span></a></li>
+          </ul>
+        </div>
+        <div class="ig">
+          <p class="ig-ttl">🤝 Cómo consolar a los demás</p>
+          <ul>
+          <li><a href="#s-como-consolar-a-los-demas-p4" onclick="return goToCard('s-como-consolar-a-los-demas-p4');" ontouchend="return goToCard('s-como-consolar-a-los-demas-p4');" onclick="goToCard('s-como-consolar-a-los-demas-p4')"><span class="idx-n">4</span><span class="idx-q">¿Cuál es una de las mejores maneras de consolar a los demás? (Romanos 1:11, 12)</span></a></li>
+          <li><a href="#s-como-consolar-a-los-demas-p5" onclick="return goToCard('s-como-consolar-a-los-demas-p5');" ontouchend="return goToCard('s-como-consolar-a-los-demas-p5');" onclick="goToCard('s-como-consolar-a-los-demas-p5')"><span class="idx-n">5</span><span class="idx-q">¿Qué podemos esperar en este sistema?</span></a></li>
+          <li><a href="#s-como-consolar-a-los-demas-p6" onclick="return goToCard('s-como-consolar-a-los-demas-p6');" ontouchend="return goToCard('s-como-consolar-a-los-demas-p6');" onclick="goToCard('s-como-consolar-a-los-demas-p6')"><span class="idx-n">6</span><span class="idx-q">¿Cómo podemos imitar a Jehová al consolar a otros?</span></a></li>
+          <li><a href="#s-como-consolar-a-los-demas-p7" onclick="return goToCard('s-como-consolar-a-los-demas-p7');" ontouchend="return goToCard('s-como-consolar-a-los-demas-p7');" onclick="goToCard('s-como-consolar-a-los-demas-p7')"><span class="idx-n">7</span><span class="idx-q">¿Cómo podemos averiguar lo que necesita alguien que está sufriendo?</span></a></li>
+          <li><a href="#s-como-consolar-a-los-demas-p8" onclick="return goToCard('s-como-consolar-a-los-demas-p8');" ontouchend="return goToCard('s-como-consolar-a-los-demas-p8');" onclick="goToCard('s-como-consolar-a-los-demas-p8')"><span class="idx-n">8</span><span class="idx-q">¿Cómo consoló Jesús a Marta y a María, y qué aprendemos?</span></a></li>
+          <li><a href="#s-como-consolar-a-los-demas-p9" onclick="return goToCard('s-como-consolar-a-los-demas-p9');" ontouchend="return goToCard('s-como-consolar-a-los-demas-p9');" onclick="goToCard('s-como-consolar-a-los-demas-p9')"><span class="idx-n">9</span><span class="idx-q">¿Cómo nos ayuda la Biblia a consolar a otros? (Romanos 15:4, 5)</span></a></li>
+          <li><a href="#s-como-consolar-a-los-demas-p10" onclick="return goToCard('s-como-consolar-a-los-demas-p10');" ontouchend="return goToCard('s-como-consolar-a-los-demas-p10');" onclick="goToCard('s-como-consolar-a-los-demas-p10')"><span class="idx-n">10</span><span class="idx-q">¿Por qué es tan importante hablar con bondad al consolar?</span></a></li>
+          <li><a href="#s-como-consolar-a-los-demas-p11" onclick="return goToCard('s-como-consolar-a-los-demas-p11');" ontouchend="return goToCard('s-como-consolar-a-los-demas-p11');" onclick="goToCard('s-como-consolar-a-los-demas-p11')"><span class="idx-n">11</span><span class="idx-q">¿Qué necesitan muchas veces quienes están sufriendo? (1 Juan 3:18)</span></a></li>
+          <li><a href="#s-como-consolar-a-los-demas-p12" onclick="return goToCard('s-como-consolar-a-los-demas-p12');" ontouchend="return goToCard('s-como-consolar-a-los-demas-p12');" onclick="goToCard('s-como-consolar-a-los-demas-p12')"><span class="idx-n">12</span><span class="idx-q">¿Cómo ayudamos a nuestros hermanos cuando aguantamos las dificultades?</span></a></li>
+          <li><a href="#s-como-consolar-a-los-demas-p13" onclick="return goToCard('s-como-consolar-a-los-demas-p13');" ontouchend="return goToCard('s-como-consolar-a-los-demas-p13');" onclick="goToCard('s-como-consolar-a-los-demas-p13')"><span class="idx-n">13</span><span class="idx-q">¿Qué cualidad necesitamos, y por qué?</span></a></li>
+          </ul>
+        </div>
+        <div class="ig">
+          <p class="ig-ttl">🫶 Qué hacer cuando nosotros necesitamos consuelo</p>
+          <ul>
+          <li><a href="#s-que-hacer-cuando-nosotros-nece-p1415" onclick="return goToCard('s-que-hacer-cuando-nosotros-nece-p1415');" ontouchend="return goToCard('s-que-hacer-cuando-nosotros-nece-p1415');" onclick="goToCard('s-que-hacer-cuando-nosotros-nece-p1415')"><span class="idx-n">14, 15</span><span class="idx-q">¿Qué debemos hacer si nos sentimos abrumados o angustiados?</span></a></li>
+          <li><a href="#s-que-hacer-cuando-nosotros-nece-p16" onclick="return goToCard('s-que-hacer-cuando-nosotros-nece-p16');" ontouchend="return goToCard('s-que-hacer-cuando-nosotros-nece-p16');" onclick="goToCard('s-que-hacer-cuando-nosotros-nece-p16')"><span class="idx-n">16</span><span class="idx-q">¿Qué es posible que ocurra cuando otros intenten animarnos, pero qué debemos recordar?</span></a></li>
+          <li><a href="#s-que-hacer-cuando-nosotros-nece-p17" onclick="return goToCard('s-que-hacer-cuando-nosotros-nece-p17');" ontouchend="return goToCard('s-que-hacer-cuando-nosotros-nece-p17');" onclick="goToCard('s-que-hacer-cuando-nosotros-nece-p17')"><span class="idx-n">17</span><span class="idx-q">¿Qué meta deberíamos ponernos?</span></a></li>
+          </ul>
+        </div>
+        <div class="ig">
+          <p class="ig-ttl">✅ ¿Qué respondería? — Preguntas de repaso</p>
+          <ul>
+          <li><a href="#s-que-responderia-preguntas-de-r-pR1" onclick="return goToCard('s-que-responderia-preguntas-de-r-pR1');" ontouchend="return goToCard('s-que-responderia-preguntas-de-r-pR1');" onclick="goToCard('s-que-responderia-preguntas-de-r-pR1')"><span class="idx-n">R1</span><span class="idx-q">¿Cuál es el significado de “consolar” en la Biblia?</span></a></li>
+          <li><a href="#s-que-responderia-preguntas-de-r-pR2" onclick="return goToCard('s-que-responderia-preguntas-de-r-pR2');" ontouchend="return goToCard('s-que-responderia-preguntas-de-r-pR2');" onclick="goToCard('s-que-responderia-preguntas-de-r-pR2')"><span class="idx-n">R2</span><span class="idx-q">¿Cómo podemos consolar a los demás?</span></a></li>
+          <li><a href="#s-que-responderia-preguntas-de-r-pR3" onclick="return goToCard('s-que-responderia-preguntas-de-r-pR3');" ontouchend="return goToCard('s-que-responderia-preguntas-de-r-pR3');" onclick="goToCard('s-que-responderia-preguntas-de-r-pR3')"><span class="idx-n">R3</span><span class="idx-q">¿Qué podemos hacer cuando necesitamos consuelo?</span></a></li>
+          </ul>
+        </div>
+    </div>
+  </div>
+
+
+    <section class="blk" id="s-introduccion">
+      <header class="s-band">
+        <span class="s-ic">🌅</span>
+        <h2>Introducción</h2>
+      </header>
+      <article class="qcard" id="s-introduccion-p1">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 1</span>
+          <span class="q-txt">¿Por qué debemos consolar a los demás?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Debemos consolar a los demás porque todos pasamos por pruebas y necesitamos ánimo, y porque así imitamos a Jehová, “el Dios de todo consuelo”.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>Jehová no nos consuela solo para que nos sintamos mejor, sino para que después usemos ese mismo consuelo con otros. Y lo hacemos con gusto, por amor a nuestros hermanos, no por obligación.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Cuando un hermano o un familiar está triste, no esperes a que te lo pida: acércate y anímalo, igual que tú agradeces que otros lo hagan contigo cuando estás sufriendo.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Es como cuando alguien te presta su paraguas en plena tormenta. Después, al ver a otra persona mojándose, recuerdas lo bien que se sintió ese gesto y se lo pasas a ella. El consuelo que recibimos se va “prestando” hacia adelante.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Imagina que a una hermana se le murió su mascota y se siente sola. Si la llamas solo para preguntarle cómo está y la escuchas, ya la estás consolando. No hace falta resolverle el problema; basta con estar.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>2 Corintios 1:4 dice que Jehová “nos consuela [...] para que nosotros podamos consolar con el consuelo que recibimos de Dios”. O sea, lo que Jehová hace por nosotros se vuelve un “entrenamiento”: lo que aprendemos al recibir su consuelo lo aplicamos cuando ayudamos a otros que están pasando por lo mismo que nosotros pasamos antes.</p>
+        </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="blk" id="s-el-significado-de-consolar-en-">
+      <header class="s-band">
+        <span class="s-ic">📚</span>
+        <h2>El significado de “consolar” en la Biblia</h2>
+      </header>
+      <article class="qcard" id="s-el-significado-de-consolar-en--p2">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 2</span>
+          <span class="q-txt">En la Biblia, ¿qué significados puede tener la palabra griega que se ha traducido “consolar”?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Esa palabra griega puede significar “animar”, “exhortar” y “aconsejar”; y literalmente quiere decir “llamar al lado de uno”.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>La imagen es la de alguien que corre a ponerse al lado de un amigo que sufre para apoyarlo. No importa qué haga exactamente: el resultado siempre es el mismo, su amigo queda animado y fortalecido.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Consolar no es solo decir palabras bonitas. A veces es dar ánimo, otras un consejo amable, y otras simplemente acompañar. Lo importante es acercarse, no quedarse lejos.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Piensa en un bombero que no le grita instrucciones a la persona desde la calle, sino que sube y se pone a su lado para sacarla. “Consolar” en la Biblia tiene ese sabor: ponerse al lado, no dirigir desde lejos.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Si un compañero está nervioso antes de una entrevista, puedes animarlo (“vas a estar bien”), aconsejarlo (“respira y ve con calma”) o solo acompañarlo hasta la puerta. Las tres cosas son “consolar”.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>En Romanos 12:8 se anima al cristiano “que anima” a hacerlo de corazón. Eso nos recuerda que dar ánimo es algo que Jehová valora, y que cualquiera de nosotros puede ponerse “al lado” de quien lo necesita.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-el-significado-de-consolar-en--p3">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 3</span>
+          <span class="q-txt">¿Qué buen ejemplo nos puso Bernabé?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Bernabé fue un ejemplo de consuelo: confió en Saulo cuando los demás discípulos le tenían miedo y se lo presentó personalmente a los apóstoles.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>Su nombre real era José, pero los apóstoles lo apodaron Bernabé, que significa “hijo del consuelo”. Ese apodo le quedó tan bien que la Biblia ya nunca lo vuelve a llamar José.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>A veces alguien nuevo en la congregación, o alguien con un pasado difícil, necesita que le den una oportunidad. Podemos ser ese “puente”, como lo fue Bernabé.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Bernabé fue como esa persona que, en una reunión donde nadie te conoce, te toma del brazo, te presenta a los demás y rompe el hielo por ti. De repente dejas de sentirte un extraño.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Si llega un publicador nuevo y los demás lo miran con distancia, tú puedes acercarte, sentarte con él y presentarle a otros hermanos. Ese pequeño gesto puede cambiarle por completo la experiencia.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>Hechos 9:26-28 muestra que, gracias a que Bernabé lo tomó y lo llevó a los apóstoles, Saulo terminó siendo aceptado. Un solo hermano dispuesto a confiar abrió la puerta para que el futuro apóstol Pablo se integrara. Nuestro gesto también puede tener un efecto enorme.</p>
+        </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="blk" id="s-como-consolar-a-los-demas">
+      <header class="s-band">
+        <span class="s-ic">🤝</span>
+        <h2>Cómo consolar a los demás</h2>
+      </header>
+      <article class="qcard" id="s-como-consolar-a-los-demas-p4">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 4</span>
+          <span class="q-txt">¿Cuál es una de las mejores maneras de consolar a los demás? (Romanos 1:11, 12)</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Una de las mejores maneras es visitar a la persona, es decir, ir a animarla en persona siempre que sea posible.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>Jehová mismo envió a un ángel para animar a Elías cuando estaba hundido en la tristeza. Y una visita de verdad no es un “hola y adiós”: requiere pasar tiempo con la persona. Si no podemos ir, un mensaje, una llamada, una tarjeta o una carta también fortalecen mucho.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Cuando sepas que alguien la está pasando mal, busca la manera de estar presente. Si vives lejos, una llamada de diez minutos vale más que un “ánimo” suelto por mensaje.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Es la diferencia entre mandarle a un amigo enfermo la foto de una sopa y llevarle la sopa caliente a su casa. Las dos cosas se agradecen, pero la presencia tiene un calor que un mensaje no siempre alcanza.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Si un hermano mayor vive solo y no puede salir, pasar una tarde a tomar un café con él y escucharlo lo anima muchísimo, aunque no hablen de nada “profundo”.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>En Romanos 1:11, 12 Pablo dice que quería verlos para que “haya un intercambio de ánimo” entre ellos. Fíjate: él, un apóstol, también recibía ánimo de los demás. Visitar a alguien no es solo dar; los dos salen fortalecidos.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-como-consolar-a-los-demas-p5">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 5</span>
+          <span class="q-txt">¿Qué podemos esperar en este sistema?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Podemos esperar que la vida sea cada vez más difícil, y que también sea más difícil ir a consolar a nuestros hermanos en persona.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>Onesíforo arriesgó la cárcel e incluso la vida con tal de encontrar a Pablo, que estaba preso en Roma. Hoy, hermanos en Rusia hacen algo parecido: asisten a los juicios de otros Testigos para apoyarlos, aunque saben que arriesgan su propia libertad.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>No esperemos que ayudar a otros sea siempre cómodo. A veces consolar cuesta tiempo, esfuerzo o valor, pero vale la pena. Podemos prepararnos desde ahora estudiando ejemplos de hermanos que se han mantenido fieles bajo presión.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Es como un socorrista que igual se mete al mar agitado para rescatar a alguien. Sabe que hay olas, pero el valor de la otra persona pesa más que su comodidad.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Si un hermano está pasando por algo delicado y a ti te da pena o te incomoda acercarte, hacerlo de todos modos —con una llamada o una visita— es justamente ese “valor” del que habla el artículo.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>2 Timoteo 1:16-18 elogia a Onesíforo porque “muchas veces me dio ánimo y no se avergonzó de mis cadenas”. Buscar y apoyar a alguien en su peor momento, sin que nos dé vergüenza su situación, es una forma valiente de consolar.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-como-consolar-a-los-demas-p6">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 6</span>
+          <span class="q-txt">¿Cómo podemos imitar a Jehová al consolar a otros?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Podemos imitarlo escuchando: prestando atención a nuestros hermanos con paciencia y respeto, aunque se repitan o digan algo fuera de lugar.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>Jehová escuchó a Elías con cariño aunque ya conocía toda la situación, y no se cansó aunque el profeta repitió lo mismo varias veces. También escuchó a Habacuc, que le habló de una forma que podría parecer poco respetuosa, sin enojarse.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Cuando alguien se desahoga contigo, no lo interrumpas ni saltes a dar soluciones. Sé “rápido para escuchar” y deja que termine, aunque tarde o repita.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Escuchar bien es como ser un vaso de agua para alguien que tiene sed: no le explicas cómo funciona la hidratación, simplemente estás ahí para que se descargue. Muchas veces la persona no busca respuestas, busca ser oída.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Si una hermana te cuenta entre lágrimas el mismo problema por tercera vez, en vez de decir “eso ya me lo contaste”, escúchala con la misma paciencia. Para ella, contarlo otra vez es parte de sanar.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>Santiago 1:19 nos dice que seamos “rápidos para escuchar, lentos para hablar”. Si aplicamos esto, la persona se siente valorada; si hacemos lo contrario, aunque tengamos buenas intenciones, puede sentirse ignorada.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-como-consolar-a-los-demas-p7">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 7</span>
+          <span class="q-txt">¿Cómo podemos averiguar lo que necesita alguien que está sufriendo?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Lo averiguamos escuchándolo con mucha atención y haciéndole preguntas con tacto, porque nosotros no podemos leer el corazón.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>Es fácil suponer que la persona necesita lo mismo que necesitaríamos nosotros, pero cada persona es un mundo. No demos nada por sentado; tomémonos el tiempo de descubrir qué siente y qué necesita de verdad.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Antes de aconsejar, pregunta. Algo tan simple como “¿qué es lo que más te está pesando ahora?” puede mostrarte que la persona necesita algo muy distinto de lo que imaginabas.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Es como un médico que no receta antes de revisar. Si da la medicina sin preguntar dónde duele, puede equivocarse de tratamiento. Primero se escucha, luego se ayuda.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Tal vez creas que un hermano que perdió el trabajo necesita consejos para conseguir empleo, pero al escucharlo descubres que lo que más le duele es sentirse un fracaso. Entonces lo que necesita es ánimo, no una lista de empresas.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>Proverbios 20:5 dice que los pensamientos del corazón son como aguas profundas, pero “el hombre de buen discernimiento los sacará”. Con preguntas amables y paciencia, ayudamos a la persona a sacar lo que lleva dentro.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-como-consolar-a-los-demas-p8">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 8</span>
+          <span class="q-txt">¿Cómo consoló Jesús a Marta y a María, y qué aprendemos?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Jesús consoló a cada una de forma distinta: a Marta le habló de la resurrección para fortalecer su fe, y con María simplemente lloró. Aprendemos que no hay una fórmula única para consolar.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>Las dos sufrieron la misma pérdida —la muerte de su hermano Lázaro—, pero Jesús notó que cada una necesitaba algo diferente y respondió a esa necesidad concreta.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>No trates a todos igual cuando sufren. A unos les ayudan las palabras y los textos; a otros, que estés a su lado en silencio. Observa qué necesita cada persona.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Es como un buen cocinero que no le sirve el mismo plato a todos sin preguntar. Uno necesita algo ligero, otro algo caliente. El “ingrediente” del consuelo cambia según la persona.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>En un velorio, a una persona la consuela que le recuerdes con cariño al ser querido; a otra, que no le digas nada y solo la abraces. Saber leer eso es imitar a Jesús.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>Juan 11:35 dice simplemente: “Jesús se puso a llorar”. El Hijo de Dios, que sabía que iba a resucitar a Lázaro, igual lloró con quienes sufrían. A veces el mejor consuelo no son las palabras, sino dejar ver que de verdad nos importa.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-como-consolar-a-los-demas-p9">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 9</span>
+          <span class="q-txt">¿Cómo nos ayuda la Biblia a consolar a otros? (Romanos 15:4, 5)</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>La Biblia nos ayuda porque, al leerle un texto a alguien, le damos “el consuelo de las Escrituras” y fortalecemos su esperanza.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>Y esa esperanza, a su vez, lo anima todavía más. Para saber qué versículo usar, ayuda tener a la mano una lista de textos animadores y pedirle a Jehová que su espíritu nos haga recordar el pasaje adecuado.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Ten preparados unos cuantos textos que te hayan consolado a ti. Cuando un hermano lo necesite, ya sabrás a dónde ir en la Biblia en vez de quedarte en blanco.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>La Biblia es como un botiquín. No improvisas cuando alguien se lastima: abres el botiquín y sacas justo lo que necesita. Tener textos a la mano es tener el botiquín listo.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Si un hermano está agotado y desanimado, leerle Isaías 40:31 (“los que esperan en Jehová recobrarán las fuerzas”) puede darle exactamente el aliento que le faltaba.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>Romanos 15:4 dice que lo escrito antes se escribió “para nuestra instrucción, para que mediante [...] el consuelo de las Escrituras tengamos esperanza”. La Palabra de Dios no es solo información: es una fuente de consuelo lista para compartir.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-como-consolar-a-los-demas-p10">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 10</span>
+          <span class="q-txt">¿Por qué es tan importante hablar con bondad al consolar?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Es importante porque, a veces, consolar incluye aconsejar o corregir, y hay que hacerlo con cuidado para “curar y no herir”.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>Jehová nos dio el ejemplo con Elías: le corrigió su forma de pensar —Elías creía que había fallado y que era el único fiel— pero lo hizo con mucho cariño, sin decirle de frente que estaba equivocado.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Piensa bien antes de hablar, sobre todo si vas a señalar algo. Escoge palabras amables y positivas, también cuando das un discurso o un comentario en las reuniones.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Las palabras son como un cuchillo: en manos de un cirujano sanan, y en manos descuidadas hieren. La misma verdad, dicha con o sin bondad, puede levantar a alguien o hundirlo.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>En vez de decir “estás exagerando”, puedes decir “entiendo que te sientas así; ¿puedo contarte cómo lo veo yo?”. El mensaje puede ser parecido, pero el tono lo cambia todo.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>Proverbios 12:18 dice que “el hablar irreflexivo es como las estocadas de una espada, pero la lengua de los sabios es una curación”. Antes de hablar, vale la pena preguntarnos: ¿esto va a curar o a herir?</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-como-consolar-a-los-demas-p11">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 11</span>
+          <span class="q-txt">¿Qué necesitan muchas veces quienes están sufriendo? (1 Juan 3:18)</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Muchas veces necesitan más que palabras: necesitan ayuda práctica.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>Bernabé lo entendió bien: vendió un terreno y dio el dinero a los apóstoles para ayudar a unos hermanos pobres. Hoy los cristianos hacen lo mismo, como cuando varios hermanos repararon en un solo día la casa de Gabriela, en Polonia, tras una inundación.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Pregúntate qué necesita en concreto la persona: ¿comida, transporte, una mano con un trámite, compañía? A veces el mejor consuelo es una acción, no un discurso.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Decirle “todo va a estar bien” a alguien con la casa inundada es como ofrecerle un mapa cuando lo que necesita es una balsa. Las palabras ayudan, pero la ayuda práctica es la que lo saca del agua.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Si una hermana acaba de salir del hospital, llevarle comida lista o cuidarle a los niños un rato la consuela más que muchas frases de ánimo.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>1 Juan 3:18 nos dice que amemos “no de palabra ni con la lengua, sino con hechos y de verdad”. El amor de verdad se nota en lo que hacemos, no solo en lo que decimos.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-como-consolar-a-los-demas-p12">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 12</span>
+          <span class="q-txt">¿Cómo ayudamos a nuestros hermanos cuando aguantamos las dificultades?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Los ayudamos porque, al vernos aguantar con fidelidad, ellos se sienten animados y fortalecidos.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>A Pablo lo consoló saber que los tesalonicenses se mantenían firmes; veía que su esfuerzo no había sido en vano. Y él, a su vez, sabía que su propia fidelidad animaba a otros, incluso a hermanos que ni lo conocían.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Aguantar bien tus propias pruebas no es solo un asunto personal: es un ejemplo que da fuerza a quienes te observan. Tu constancia predica sin palabras.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Es como un corredor que sigue adelante a pesar del cansancio. Sin decir nada, anima a los que corren a su lado a no rendirse. Tu aguante “contagia” fuerza.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Si los hermanos ven que sigues asistiendo a las reuniones y sirviendo con alegría a pesar de una enfermedad o un problema familiar, eso los anima a no rendirse en sus propias luchas.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>En 1 Tesalonicenses 3:7 Pablo dice que fue consolado por la fe de sus hermanos “en toda nuestra angustia y tribulación”. Saber que otro se mantiene firme nos da fuerzas; por eso tu fidelidad es un regalo para toda la congregación.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-como-consolar-a-los-demas-p13">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 13</span>
+          <span class="q-txt">¿Qué cualidad necesitamos, y por qué?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Necesitamos paciencia, porque a veces nuestros esfuerzos por consolar no dan resultado de inmediato.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>La Biblia dice “sigan animándose unos a otros”, y esa expresión transmite una acción continua. O sea, no es animar una vez y listo, sino seguir haciéndolo sin darnos por vencidos.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Si animaste a alguien y no ves un cambio enseguida, no te desanimes ni lo abandones. Vuelve a estar presente, una y otra vez.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Consolar es como regar una planta: no florece con un solo riego. Hay que seguir, día tras día, aunque al principio no se vea nada brotar.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Tal vez un hermano deprimido no mejore después de tu primera visita. Pero si lo sigues llamando y acompañando durante semanas, ese apoyo constante puede ser justo lo que lo sostenga.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>1 Tesalonicenses 5:14 nos anima a “hablar de manera consoladora a los que están deprimidos” y a “ser pacientes con todos”. La paciencia es la que sostiene el consuelo cuando los resultados tardan en llegar.</p>
+        </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="blk" id="s-que-hacer-cuando-nosotros-nece">
+      <header class="s-band">
+        <span class="s-ic">🫶</span>
+        <h2>Qué hacer cuando nosotros necesitamos consuelo</h2>
+      </header>
+      <article class="qcard" id="s-que-hacer-cuando-nosotros-nece-p1415">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 14, 15</span>
+          <span class="q-txt">¿Qué debemos hacer si nos sentimos abrumados o angustiados?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Debemos orar a Jehová y pedir ayuda a un amigo maduro o a un anciano de confianza.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>Al orar, seamos específicos y contémosle a Jehová todo lo que sentimos; aunque él ya lo sabe, al abrirle el corazón le mostramos que confiamos en él. Y como los hermanos no pueden adivinar lo que sentimos, hay que decírselo para que puedan ayudarnos.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Cuando estés abrumado, no te lo guardes todo. Habla con Jehová en oración con detalle, y luego cuéntale a alguien de confianza cómo estás; pídele que te escuche o que te muestre un texto que lo haya ayudado.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Guardarse el dolor es como cargar una mochila pesada sin pedir ayuda. Orar y hablar con un amigo es repartir el peso; de repente la carga se hace más llevadera.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Si una noche sientes que ya no puedes más, arrodíllate y dile a Jehová exactamente qué te angustia. Al día siguiente, llama a un hermano maduro y dile: “necesito desahogarme, ¿me escuchas?”.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>Filipenses 4:6, 7 nos invita a hacerle saber a Dios nuestras peticiones, y promete que “la paz de Dios, que está más allá de lo que ningún ser humano puede entender, protegerá sus corazones”. Contarle a Jehová lo que sentimos trae una calma que no podríamos conseguir solos.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-que-hacer-cuando-nosotros-nece-p16">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 16</span>
+          <span class="q-txt">¿Qué es posible que ocurra cuando otros intenten animarnos, pero qué debemos recordar?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Es posible que los hermanos se equivoquen y, sin querer, digan o hagan algo que nos haga sentir peor; debemos recordar que tienen buenas intenciones y ser pacientes con ellos.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>Nadie es perfecto al hablar. En vez de fijarnos en el error, conviene centrarnos en el cariño que hay detrás. “El espíritu está dispuesto, pero la carne es débil”.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Si alguien te dice algo que te cae mal mientras intenta animarte, no te lo tomes a pecho ni guardes resentimiento. Recuerda que quiso ayudarte y perdónalo.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Es como cuando alguien te regala algo con toda la ilusión, aunque no sea exactamente lo que querías. Te quedas con el gesto, no con el objeto. Lo mismo pasa con las palabras torpes pero bien intencionadas.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Si un hermano, queriendo animarte, te dice “ánimo, hay gente que está peor”, en vez de molestarte puedes pensar: “lo dijo de buena fe” y agradecer que se acercó.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>Santiago 3:2 reconoce que “todos tropezamos muchas veces” y que “el que nunca tropieza con sus palabras es perfecto”. Como nadie habla perfecto, ser pacientes y perdonar nos ayuda a recibir el consuelo aunque venga “envuelto” de forma torpe.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-que-hacer-cuando-nosotros-nece-p17">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 17</span>
+          <span class="q-txt">¿Qué meta deberíamos ponernos?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Deberíamos ponernos la meta de consolarnos unos a otros tanto como podamos.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>Esta necesidad de consuelo será cada vez mayor a medida que los últimos días se vuelvan más críticos y los enemigos de Dios se opongan con más furia. Por eso conviene tomarlo como un objetivo personal, no como algo ocasional.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Proponte buscar activamente a quién animar: a la salida de la reunión, con una llamada durante la semana, con un mensaje. Que consolar sea parte de tu rutina, no algo que dejas al azar.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Es como ponerse la meta de tomar agua a lo largo del día: si esperas a tener mucha sed, ya es tarde. Si lo haces de forma constante, todos se mantienen fuertes.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Podrías proponerte animar al menos a una persona cada semana. Con el tiempo, sin darte cuenta, te conviertes en alguien a quien los demás acuden cuando necesitan ánimo.</p>
+        </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="blk" id="s-que-responderia-preguntas-de-r">
+      <header class="s-band">
+        <span class="s-ic">✅</span>
+        <h2>¿Qué respondería? — Preguntas de repaso</h2>
+      </header>
+      <article class="qcard" id="s-que-responderia-preguntas-de-r-pR1">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. R1</span>
+          <span class="q-txt">¿Cuál es el significado de “consolar” en la Biblia?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Significa “llamar al lado de uno”; incluye animar, exhortar y aconsejar a quien sufre.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>La idea es ponerse al lado de la persona para apoyarla, de modo que termine animada y fortalecida, sin importar qué hagamos exactamente por ella.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Recuerda que consolar va más allá de las palabras: es acercarte, escuchar y, a veces, dar un consejo amable o una ayuda práctica.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Como un amigo que se sienta a tu lado en tu peor día; no tiene que arreglarlo todo, solo estar contigo.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Acompañar en silencio a alguien que llora ya es “consolar” en el sentido bíblico.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>2 Corintios 1:3, 4 llama a Jehová “el Dios de todo consuelo”, el modelo perfecto de lo que significa ponerse al lado del que sufre.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-que-responderia-preguntas-de-r-pR2">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. R2</span>
+          <span class="q-txt">¿Cómo podemos consolar a los demás?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Visitándolos, escuchándolos, averiguando lo que necesitan, usando la Biblia, hablando con bondad, ayudando de forma práctica, aguantando las dificultades y siendo pacientes.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>No hay una sola forma; combinamos varias según la persona y la situación, siempre imitando a Jehová y a Jesús.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Antes de actuar, pregúntate: ¿esta persona necesita compañía, que la escuchen, un texto, o una mano práctica? Y ofrécele eso.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Es como tener una caja de herramientas: usas la herramienta adecuada para cada necesidad, no siempre la misma.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>A un hermano enfermo quizá lo ayudes llevándole comida; a otro que está triste, escuchándolo una tarde entera.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>1 Juan 3:18 nos recuerda amar “con hechos y de verdad”, uniendo las palabras a las acciones.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-que-responderia-preguntas-de-r-pR3">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. R3</span>
+          <span class="q-txt">¿Qué podemos hacer cuando necesitamos consuelo?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Orar a Jehová, pedir ayuda a un amigo o anciano de confianza, y ser pacientes y perdonar cuando otros se equivoquen al animarnos.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>Abrirle el corazón a Jehová nos da paz, y dejar que los hermanos nos ayuden nos recuerda que no estamos solos.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>No te aísles. Habla con Jehová con detalle y cuéntale a alguien cómo te sientes; deja que te consuelen.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Pedir ayuda es repartir una carga pesada entre varios hombros, en vez de cargarla tú solo.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Una oración sincera por la noche y una charla con un hermano al día siguiente pueden devolverte la calma.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>Filipenses 4:6, 7 promete que, al contarle a Dios nuestras peticiones, su paz protegerá nuestro corazón y nuestra mente.</p>
+        </div>
+        </div>
+      </article>
+    </section>
+
+  <div class="closing">
+    <p class="ctitle">Idea final para meditar</p>
+    <p>Todos necesitamos consuelo, y esa necesidad crecerá. La mejor manera de aprender del “Dios de todo consuelo” es ponerlo en práctica: busca a alguien esta misma semana y anímalo de corazón.</p>
+  </div>
+
+</main>
+
+<footer>Guía de estudio personal &middot; Aprendamos del “Dios de todo consuelo”</footer>
+
+
+
+<script>
+var _studyOn = false;
+var _allClosed = false;
+
+function toggleCard(el) {
+  var card = el;
+  while (card && !card.classList.contains('qcard')) {
+    card = card.parentElement;
+  }
+  if (!card) return;
+  if (card.classList.contains('closed')) {
+    card.classList.remove('closed');
+  } else {
+    card.classList.add('closed');
+  }
+  return false;
+}
+
+function toggleIdx() {
+  var ibox = document.getElementById('indice');
+  if (!ibox) return;
+  if (ibox.classList.contains('closed')) {
+    ibox.classList.remove('closed');
+  } else {
+    ibox.classList.add('closed');
+  }
+  return false;
+}
+
+function toggleStudy() {
+  _studyOn = !_studyOn;
+  var lbl = document.getElementById('studyLbl');
+  if (lbl) lbl.textContent = _studyOn ? 'activado' : 'desactivado';
+  var cards = document.querySelectorAll('.qcard');
+  for (var i = 0; i < cards.length; i++) {
+    if (_studyOn) {
+      cards[i].classList.add('closed');
+    } else {
+      cards[i].classList.remove('closed');
+    }
+  }
+  if (_studyOn) { window.scrollTo(0, 0); }
+  return false;
+}
+
+function toggleAll() {
+  _allClosed = !_allClosed;
+  var cards = document.querySelectorAll('.qcard');
+  for (var i = 0; i < cards.length; i++) {
+    if (_allClosed) {
+      cards[i].classList.add('closed');
+    } else {
+      cards[i].classList.remove('closed');
+    }
+  }
+  var btn = document.getElementById('btnAll');
+  if (btn) btn.textContent = _allClosed ? '↕ Expandir todo' : '↕ Contraer todo';
+  return false;
+}
+
+function doPrint() {
+  window.print();
+  return false;
+}
+
+function goToCard(targetId) {
+  var card = document.getElementById(targetId);
+  if (!card) return false;
+  if (card.classList.contains('closed')) {
+    card.classList.remove('closed');
+  }
+  setTimeout(function() {
+    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+  return false;
+}
+</script>
+</body>
+</html>

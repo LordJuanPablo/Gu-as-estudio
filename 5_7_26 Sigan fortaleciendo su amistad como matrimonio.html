@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sigan fortaleciendo su amistad como matrimonio</title>
+<style>
+/* === RESET & BASE === */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:18px}
+body{
+  background:#F5F7FF;color:#252638;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+h1,h2,.q-txt,.ctitle,.ig-ttl,.idx-ttl,.idx-toggle-text{
+  font-family:Georgia,"Times New Roman",serif;
+}
+
+/* === TOKENS === */
+:root{
+  --pri:#4A3FA0; --pri-dk:#372F7A; --pri-bg:#ECE9FB;
+  --line:#DDE3F5; --muted:#636882; --card:#FFFFFF;
+  --r:14px; --sh:0 2px 8px rgba(37,38,56,.10);
+
+  --c-dir-bg:#E5F0FF; --c-dir:#1B5CB0;
+  --c-com-bg:#F0E9FB; --c-com:#6A3FAD;
+  --c-apl-bg:#FFF3E0; --c-apl:#C26000;
+  --c-ana-bg:#E4FAF1; --c-ana:#1A7A54;
+  --c-eje-bg:#FDE8F0; --c-eje:#C2285A;
+  --c-tex-bg:#FFFCE0; --c-tex:#8A6800;
+}
+
+/* === HERO === */
+.hero{
+  background:linear-gradient(135deg,#F0EEFE 0%,#E8EDFC 100%);
+  border-bottom:1px solid var(--line);
+  padding:40px 0 32px;
+}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--pri-dk);background:var(--pri-bg);
+  padding:5px 12px;border-radius:999px;border:1px solid #c9c3f0;
+  margin-bottom:14px;
+}
+h1{font-size:clamp(1.8rem,5vw,2.8rem);line-height:1.1;color:#1a1a2e;margin-bottom:6px}
+.sub{color:var(--muted);font-size:.95rem;margin-bottom:18px}
+.sub b{color:#252638}
+
+.verse-box{
+  background:#fff;border:1px solid var(--line);border-left:5px solid var(--pri);
+  border-radius:12px;padding:14px 18px;margin-bottom:18px;box-shadow:var(--sh);
+}
+.verse-box .vtag{
+  font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--pri-dk);display:block;margin-bottom:4px;
+}
+.verse-box p{font-style:italic;color:#252638}
+
+.howto-box{
+  display:flex;gap:12px;align-items:flex-start;
+  background:#fafbff;border:1px dashed #c4cdf5;border-radius:10px;
+  padding:12px 16px;margin-bottom:18px;font-size:.95rem;color:#4b4f6a;
+}
+.howto-box .bi{font-size:1.3rem;line-height:1;flex-shrink:0}
+
+/* Legend */
+.leg-wrap{margin-bottom:20px}
+.leg-ttl{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.leg-row{display:flex;flex-wrap:wrap;gap:7px}
+.leg{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:.82rem;font-weight:700;padding:5px 11px;
+  border-radius:999px;border:1px solid transparent;
+}
+.leg-directa{background:var(--c-dir-bg);color:var(--c-dir);border-color:#c0d8f5}
+.leg-complemento{background:var(--c-com-bg);color:var(--c-com);border-color:#d6c8f5}
+.leg-aplicacion{background:var(--c-apl-bg);color:var(--c-apl);border-color:#f5ddb0}
+.leg-analogia{background:var(--c-ana-bg);color:var(--c-ana);border-color:#b8ecd7}
+.leg-ejemplo{background:var(--c-eje-bg);color:var(--c-eje);border-color:#f5c0d6}
+.leg-texto{background:var(--c-tex-bg);color:var(--c-tex);border-color:#f0e090}
+
+/* Toolbar */
+.toolbar{display:flex;flex-wrap:wrap;gap:9px}
+.btn{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:inherit;font-size:.9rem;font-weight:700;
+  cursor:pointer;border-radius:999px;padding:9px 16px;
+  border:1px solid var(--line);background:#fff;color:#252638;
+  box-shadow:var(--sh);transition:background .15s,transform .1s;
+  -webkit-appearance:none;appearance:none;
+}
+.btn:hover{background:#f0f2ff;transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn:focus{outline:3px solid #b0a8ef;outline-offset:2px}
+.btn.pri{background:var(--pri);color:#fff;border-color:var(--pri-dk)}
+.btn.pri:hover{background:var(--pri-dk)}
+
+/* === STICKY NAV === */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(245,247,255,.96);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:860px;margin:0 auto;
+  padding:9px 20px;display:flex;gap:8px;
+  overflow-x:auto;scrollbar-width:none;
+}
+.nav-inner::-webkit-scrollbar{display:none}
+.chip{
+  flex-shrink:0;text-decoration:none;white-space:nowrap;
+  font-size:.82rem;font-weight:700;
+  color:var(--pri-dk);background:var(--pri-bg);
+  border:1px solid #c9c3f0;padding:6px 12px;border-radius:999px;
+  transition:background .15s,transform .1s;
+}
+.chip:hover{background:#ddd8f8;transform:translateY(-1px)}
+.chip:focus{outline:3px solid #b0a8ef;outline-offset:2px}
+
+/* === MAIN === */
+main.wrap{padding-top:4px;padding-bottom:40px}
+
+/* Index box */
+.ibox{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  box-shadow:var(--sh);margin:22px 0 28px;overflow:hidden;
+}
+.idx-toggle{
+  width:100%;display:flex;align-items:center;justify-content:space-between;
+  background:var(--pri-bg);border:0;border-bottom:1px solid var(--line);
+  font-family:inherit;color:var(--pri-dk);padding:15px 20px;cursor:pointer;
+  -webkit-appearance:none;appearance:none;
+}
+.idx-toggle:focus{outline:3px solid #b0a8ef;outline-offset:-3px}
+.idx-toggle-text{font-size:1rem;font-weight:700;display:flex;align-items:center;gap:7px}
+.idx-arr{transition:transform .2s;font-size:.9rem}
+.ibox.closed .idx-arr{transform:rotate(-90deg)}
+.idx-bd{padding:16px 20px 8px;display:grid;gap:16px}
+.ibox.closed .idx-bd{display:none}
+.ig-ttl{font-size:.9rem;font-weight:700;color:#252638;margin-bottom:7px}
+.ig ul{list-style:none;display:grid;gap:5px}
+.ig ul a{
+  display:flex;align-items:baseline;gap:9px;
+  text-decoration:none;color:#252638;
+  padding:7px 10px;border-radius:9px;
+  transition:background .15s;
+}
+.ig ul a:hover{background:#E8EDFC}
+.ig ul a:focus{outline:3px solid #b0a8ef;outline-offset:1px}
+.idx-n{
+  flex-shrink:0;font-size:.7rem;font-weight:700;color:#fff;
+  background:var(--pri);padding:2px 8px;border-radius:999px;white-space:nowrap;
+}
+.idx-q{font-size:.94rem;line-height:1.4;color:#3e4060}
+
+/* Section */
+.blk{padding:28px 0 4px;scroll-margin-top:66px}
+.s-band{display:flex;align-items:center;gap:11px;margin-bottom:16px}
+.s-ic{
+  width:42px;height:42px;flex-shrink:0;display:grid;place-items:center;
+  font-size:1.2rem;background:var(--pri-bg);border:1px solid #c9c3f0;border-radius:11px;
+}
+.s-band h2{font-size:clamp(1.2rem,3vw,1.65rem);color:var(--pri-dk);font-weight:700;line-height:1.2}
+
+/* Question card */
+.qcard{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  box-shadow:var(--sh);margin-bottom:16px;overflow:hidden;scroll-margin-top:66px;
+}
+.q-hd{
+  width:100%;text-align:left;cursor:pointer;background:transparent;border:0;
+  font-family:inherit;color:#252638;padding:16px 18px 13px;
+  display:grid;grid-template-columns:auto 1fr auto;gap:4px 10px;align-items:start;
+  -webkit-appearance:none;appearance:none;
+}
+.q-hd:focus{outline:3px solid #b0a8ef;outline-offset:-3px}
+.q-num{
+  grid-row:1;grid-column:1;align-self:center;
+  font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  color:#fff;background:var(--pri);padding:4px 10px;border-radius:999px;white-space:nowrap;
+}
+.q-txt{
+  grid-row:1;grid-column:2;align-self:center;
+  font-size:1.08rem;font-weight:600;line-height:1.35;color:#1a1a2e;
+}
+.q-arr{
+  grid-row:1;grid-column:3;align-self:center;
+  color:var(--muted);font-size:.85rem;transition:transform .2s;
+}
+.qcard.closed .q-arr{transform:rotate(-90deg)}
+.q-bd{padding:2px 18px 16px;display:grid;gap:10px}
+.qcard.closed .q-bd{display:none}
+
+/* Answer blocks */
+.ans{border-radius:0 11px 11px 0;padding:13px 15px;border-left:5px solid}
+.ans-lbl{font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  display:flex;align-items:center;gap:5px;margin-bottom:5px}
+.ans p{font-size:1rem;line-height:1.72;color:#252638}
+
+.a-directa{background:var(--c-dir-bg);border-left-color:var(--c-dir)}
+.a-directa .ans-lbl{color:var(--c-dir)}
+.a-complemento{background:var(--c-com-bg);border-left-color:var(--c-com)}
+.a-complemento .ans-lbl{color:var(--c-com)}
+.a-aplicacion{background:var(--c-apl-bg);border-left-color:var(--c-apl)}
+.a-aplicacion .ans-lbl{color:var(--c-apl)}
+.a-analogia{background:var(--c-ana-bg);border-left-color:var(--c-ana)}
+.a-analogia .ans-lbl{color:var(--c-ana)}
+.a-ejemplo{background:var(--c-eje-bg);border-left-color:var(--c-eje)}
+.a-ejemplo .ans-lbl{color:var(--c-eje)}
+.a-texto{background:var(--c-tex-bg);border-left-color:var(--c-tex)}
+.a-texto .ans-lbl{color:var(--c-tex)}
+
+/* Study mode hint */
+.s-hint{display:none;padding:4px 18px 14px;font-style:italic;font-size:.9rem;color:var(--muted)}
+body.study .qcard.closed .s-hint{display:block}
+
+/* Closing */
+.closing{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r);
+  padding:20px 22px;margin-top:24px;box-shadow:var(--sh);
+}
+.ctitle{font-size:1.2rem;font-weight:700;color:var(--pri-dk);margin-bottom:6px}
+.closing p{font-size:1rem;color:#3e4060;line-height:1.7}
+
+footer{padding:24px 0 44px;text-align:center;color:var(--muted);font-size:.82rem}
+
+/* === RESPONSIVE === */
+@media(max-width:560px){
+  html{font-size:17px}
+  .q-hd{grid-template-columns:1fr auto;padding:14px 14px 11px}
+  .q-num{grid-row:1;grid-column:1;justify-self:start;margin-bottom:3px}
+  .q-txt{grid-row:2;grid-column:1/span 2}
+  .q-arr{grid-row:1;grid-column:2}
+  .q-bd,.s-hint{padding-left:14px;padding-right:14px}
+  .wrap{padding:0 14px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;scroll-behavior:auto!important}
+}
+@media print{
+  .nav,.toolbar,.q-arr,.s-hint,.idx-arr{display:none!important}
+  body{background:#fff;font-size:11pt}
+  .hero{background:#fff;padding:0 0 12px}
+  .qcard,.closing,.ibox{box-shadow:none;break-inside:avoid}
+  .ans{break-inside:avoid}
+  .qcard.closed .q-bd,.ibox.closed .idx-bd{display:grid!important}
+}
+
+/* Safari iOS fix */
+.btn, .q-hd, .idx-toggle, .chip {
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+  touch-action: manipulation;
+  -webkit-appearance: none;
+  appearance: none;
+}
+* { -webkit-tap-highlight-color: transparent; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">★ La Atalaya &middot; Estudio del 29 de junio al 5 de julio de 2026</div>
+    <h1>Sigan fortaleciendo su amistad como matrimonio</h1>
+    <p class="sub"><b>La Atalaya</b> (edición de estudio) &middot; abril de 2026, págs. 26-31</p>
+
+    <div class="verse-box">
+      <span class="vtag">Texto del tema</span>
+      <p>&ldquo;Hay un amigo que se apega más que un hermano&rdquo; (Proverbios 18:24).
+      Para tener un matrimonio feliz, el esposo y la esposa deben ser muy amigos y amar a Jehová.</p>
+    </div>
+
+    <div class="howto-box">
+      <span class="bi">🧭</span>
+      <p>Cada pregunta se responde desde <b>seis ángulos</b>, cada uno con su propio color.
+      Toca el encabezado de una pregunta para abrirla o cerrarla.</p>
+    </div>
+
+    <div class="leg-wrap">
+      <div class="leg-ttl">Los seis colores</div>
+      <div class="leg-row">
+        <span class="leg leg-directa">🎯 Respuesta directa</span>
+        <span class="leg leg-complemento">🧩 Para complementar</span>
+        <span class="leg leg-aplicacion">🌱 En la vida diaria</span>
+        <span class="leg leg-analogia">🔗 Analogía</span>
+        <span class="leg leg-ejemplo">💡 Ejemplo práctico</span>
+        <span class="leg leg-texto">📖 Texto bíblico y aplicación</span>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <button class="btn pri" id="btnStudy" type="button" onclick="return toggleStudy();" ontouchend="return toggleStudy();">🧠 Modo repaso: <span id="studyLbl">desactivado</span></button>
+      <button class="btn" id="btnAll" type="button" onclick="return toggleAll();" ontouchend="return toggleAll();">↕ Contraer todo</button>
+      <button class="btn" id="btnPrint" type="button" onclick="return doPrint();" ontouchend="return doPrint();">🖨 Imprimir</button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="chip" href="#s-introduccion">🌅 Introducción</a> <a class="chip" href="#s-como-elegir-un-amigo-para-toda">💍 Cómo elegir un amigo para toda la vida</a> <a class="chip" href="#s-pasen-tiempo-juntos">⏳ Pasen tiempo juntos</a> <a class="chip" href="#s-permanezcan-unidos-a-pesar-de-">🛡️ Permanezcan unidos a pesar de los problemas</a> <a class="chip" href="#s-que-responderia-preguntas-de-r">✅ ¿Qué respondería? — Preguntas de repaso</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <div class="ibox" id="indice">
+    <button class="idx-toggle" type="button" onclick="return toggleIdx();" ontouchend="return toggleIdx();">
+      <span class="idx-toggle-text">🔎 Índice de preguntas</span>
+      <span class="idx-arr">&#9660;</span>
+    </button>
+    <div class="idx-bd">
+        <div class="ig">
+          <p class="ig-ttl">🌅 Introducción</p>
+          <ul>
+          <li><a href="#s-introduccion-p1" onclick="return goToCard('s-introduccion-p1');" ontouchend="return goToCard('s-introduccion-p1');" onclick="goToCard('s-introduccion-p1')"><span class="idx-n">1</span><span class="idx-q">¿Por qué son un regalo de Jehová los buenos amigos?</span></a></li>
+          <li><a href="#s-introduccion-p2" onclick="return goToCard('s-introduccion-p2');" ontouchend="return goToCard('s-introduccion-p2');" onclick="goToCard('s-introduccion-p2')"><span class="idx-n">2</span><span class="idx-q">¿Por qué es importante que el esposo y la esposa sigan fortaleciendo su amistad? (Mateo 19:6)</span></a></li>
+          </ul>
+        </div>
+        <div class="ig">
+          <p class="ig-ttl">💍 Cómo elegir un amigo para toda la vida</p>
+          <ul>
+          <li><a href="#s-como-elegir-un-amigo-para-toda-p34" onclick="return goToCard('s-como-elegir-un-amigo-para-toda-p34');" ontouchend="return goToCard('s-como-elegir-un-amigo-para-toda-p34');" onclick="goToCard('s-como-elegir-un-amigo-para-toda-p34')"><span class="idx-n">3, 4</span><span class="idx-q">¿Qué nos ayudará a encontrar un buen esposo o esposa? (Proverbios 18:22)</span></a></li>
+          <li><a href="#s-como-elegir-un-amigo-para-toda-p5" onclick="return goToCard('s-como-elegir-un-amigo-para-toda-p5');" ontouchend="return goToCard('s-como-elegir-un-amigo-para-toda-p5');" onclick="goToCard('s-como-elegir-un-amigo-para-toda-p5')"><span class="idx-n">5</span><span class="idx-q">¿Por qué es importante que la persona que elijamos sea un Testigo bautizado?</span></a></li>
+          <li><a href="#s-como-elegir-un-amigo-para-toda-p67" onclick="return goToCard('s-como-elegir-un-amigo-para-toda-p67');" ontouchend="return goToCard('s-como-elegir-un-amigo-para-toda-p67');" onclick="goToCard('s-como-elegir-un-amigo-para-toda-p67')"><span class="idx-n">6, 7</span><span class="idx-q">¿Qué preguntas debe hacerse usted si está interesado en alguien?</span></a></li>
+          <li><a href="#s-como-elegir-un-amigo-para-toda-p89" onclick="return goToCard('s-como-elegir-un-amigo-para-toda-p89');" ontouchend="return goToCard('s-como-elegir-un-amigo-para-toda-p89');" onclick="goToCard('s-como-elegir-un-amigo-para-toda-p89')"><span class="idx-n">8, 9</span><span class="idx-q">¿Qué ayudará a alguien a decidir si debe casarse o no con una persona?</span></a></li>
+          </ul>
+        </div>
+        <div class="ig">
+          <p class="ig-ttl">⏳ Pasen tiempo juntos</p>
+          <ul>
+          <li><a href="#s-pasen-tiempo-juntos-p10" onclick="return goToCard('s-pasen-tiempo-juntos-p10');" ontouchend="return goToCard('s-pasen-tiempo-juntos-p10');" onclick="goToCard('s-pasen-tiempo-juntos-p10')"><span class="idx-n">10</span><span class="idx-q">¿Por qué es bueno que el esposo y la esposa saquen tiempo para estar juntos?</span></a></li>
+          <li><a href="#s-pasen-tiempo-juntos-p11" onclick="return goToCard('s-pasen-tiempo-juntos-p11');" ontouchend="return goToCard('s-pasen-tiempo-juntos-p11');" onclick="goToCard('s-pasen-tiempo-juntos-p11')"><span class="idx-n">11</span><span class="idx-q">¿Qué puede poner en peligro la amistad del esposo y la esposa?</span></a></li>
+          <li><a href="#s-pasen-tiempo-juntos-p1213" onclick="return goToCard('s-pasen-tiempo-juntos-p1213');" ontouchend="return goToCard('s-pasen-tiempo-juntos-p1213');" onclick="goToCard('s-pasen-tiempo-juntos-p1213')"><span class="idx-n">12, 13</span><span class="idx-q">¿Qué han hecho algunos matrimonios para asegurarse de pasar tiempo juntos? ¿Qué importancia debemos darle a la relación con nuestro esposo o esposa?</span></a></li>
+          </ul>
+        </div>
+        <div class="ig">
+          <p class="ig-ttl">🛡️ Permanezcan unidos a pesar de los problemas</p>
+          <ul>
+          <li><a href="#s-permanezcan-unidos-a-pesar-de--p1415" onclick="return goToCard('s-permanezcan-unidos-a-pesar-de--p1415');" ontouchend="return goToCard('s-permanezcan-unidos-a-pesar-de--p1415');" onclick="goToCard('s-permanezcan-unidos-a-pesar-de--p1415')"><span class="idx-n">14, 15</span><span class="idx-q">¿Por qué deben esforzarse el esposo y la esposa por resolver los problemas que aparezcan en su matrimonio?</span></a></li>
+          <li><a href="#s-permanezcan-unidos-a-pesar-de--p16" onclick="return goToCard('s-permanezcan-unidos-a-pesar-de--p16');" ontouchend="return goToCard('s-permanezcan-unidos-a-pesar-de--p16');" onclick="goToCard('s-permanezcan-unidos-a-pesar-de--p16')"><span class="idx-n">16</span><span class="idx-q">Según 1 Corintios 13:4-8a, ¿qué puede ayudar a un matrimonio que tiene graves problemas?</span></a></li>
+          <li><a href="#s-permanezcan-unidos-a-pesar-de--p17" onclick="return goToCard('s-permanezcan-unidos-a-pesar-de--p17');" ontouchend="return goToCard('s-permanezcan-unidos-a-pesar-de--p17');" onclick="goToCard('s-permanezcan-unidos-a-pesar-de--p17')"><span class="idx-n">17</span><span class="idx-q">¿Cómo pueden ser felices quienes están pensando en casarse y quienes ya están casados?</span></a></li>
+          </ul>
+        </div>
+        <div class="ig">
+          <p class="ig-ttl">✅ ¿Qué respondería? — Preguntas de repaso</p>
+          <ul>
+          <li><a href="#s-que-responderia-preguntas-de-r-pR1" onclick="return goToCard('s-que-responderia-preguntas-de-r-pR1');" ontouchend="return goToCard('s-que-responderia-preguntas-de-r-pR1');" onclick="goToCard('s-que-responderia-preguntas-de-r-pR1')"><span class="idx-n">R1</span><span class="idx-q">¿Qué ayudará a un cristiano soltero a elegir bien la persona que será su mejor amiga el resto de su vida?</span></a></li>
+          <li><a href="#s-que-responderia-preguntas-de-r-pR2" onclick="return goToCard('s-que-responderia-preguntas-de-r-pR2');" ontouchend="return goToCard('s-que-responderia-preguntas-de-r-pR2');" onclick="goToCard('s-que-responderia-preguntas-de-r-pR2')"><span class="idx-n">R2</span><span class="idx-q">¿Qué pueden hacer el esposo y la esposa para fortalecer su amistad?</span></a></li>
+          <li><a href="#s-que-responderia-preguntas-de-r-pR3" onclick="return goToCard('s-que-responderia-preguntas-de-r-pR3');" ontouchend="return goToCard('s-que-responderia-preguntas-de-r-pR3');" onclick="goToCard('s-que-responderia-preguntas-de-r-pR3')"><span class="idx-n">R3</span><span class="idx-q">¿Qué puede ayudar a un matrimonio a permanecer unido a pesar de los problemas?</span></a></li>
+          </ul>
+        </div>
+    </div>
+  </div>
+
+
+    <section class="blk" id="s-introduccion">
+      <header class="s-band">
+        <span class="s-ic">🌅</span>
+        <h2>Introducción</h2>
+      </header>
+      <article class="qcard" id="s-introduccion-p1">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 1</span>
+          <span class="q-txt">¿Por qué son un regalo de Jehová los buenos amigos?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Son un regalo porque aman a Jehová y a nosotros: se alegran con nosotros cuando estamos felices, nos consuelan cuando estamos tristes y nos aconsejan con franqueza. Son leales y confiables.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>Un buen amigo no solo está en los momentos buenos; está especialmente en los difíciles. Ese tipo de lealtad es lo que hace que una amistad sea verdadera y duradera, y por eso la Biblia dice que alegra el corazón.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Esta semana, busca a ese amigo o hermano que sabes que siempre está para ti y dile cuánto valoras su amistad. No esperes un momento especial; una llamada o un mensaje sincero puede alegrarle el día.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Un buen amigo es como un puerto seguro en medio de una tormenta: cuando el mar de la vida se agita, sabes que puedes ir ahí y encontrar calma, refugio y orientación.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Imagina que tuvieras un día muy duro en el trabajo. Un buen amigo te llama sin que se lo pidas, te escucha, te anima y tal vez hasta te hace reír. Eso es lo que hace que esa persona sea un regalo de Jehová en tu vida.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>Santiago 1:17 dice que 'todo regalo bueno y todo don perfecto viene de arriba, del Padre'. Los buenos amigos entran en esa categoría: son un don que Jehová pone en nuestra vida. Proverbios 27:9 agrega que 'el amigo da un consejo que alegra el corazón'. Aplicar esto significa valorar y cuidar esas amistades como si fueran un regalo directo de Dios.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-introduccion-p2">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 2</span>
+          <span class="q-txt">¿Por qué es importante que el esposo y la esposa sigan fortaleciendo su amistad? (Mateo 19:6)</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Porque si descuidan su amistad pueden empezar a sentirse solos, frustrados o enojados. En cambio, al seguir fortaleciéndola, disfrutan de la relación más estrecha que puede existir entre dos personas.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>El matrimonio no se mantiene solo. Como una planta, necesita atención constante: riego, luz y cuidado. Si se descuida, se va marchitando poco a poco, aunque al principio no se note.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Haz una pequeña revisión esta semana: ¿cuándo fue la última vez que tú y tu cónyuge hicieron algo especial solo para los dos? Si no recuerdas bien, es una señal de que conviene planear algo pronto.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Fortalecer la amistad en el matrimonio es como mantener el motor de un carro: si le das mantenimiento con regularidad, funciona bien por años. Si lo ignoras, un día se detiene en la carretera y la reparación es mucho más costosa.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Una pareja que trabaja mucho empieza a comunicarse solo por mensajes rápidos sobre cosas del hogar. Con el tiempo ya no hablan de cómo se sienten. Dedicar aunque sea una cena a la semana solo para los dos puede cambiar esa dinámica por completo.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>Mateo 19:6 dice que 'lo que Dios ha unido, que ningún hombre lo separe'. Esas palabras implican algo activo: Jehová los unió, y ambos tienen la responsabilidad de cuidar esa unión. No es solo una promesa hecha el día de la boda; es un compromiso diario de seguir construyendo juntos.</p>
+        </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="blk" id="s-como-elegir-un-amigo-para-toda">
+      <header class="s-band">
+        <span class="s-ic">💍</span>
+        <h2>Cómo elegir un amigo para toda la vida</h2>
+      </header>
+      <article class="qcard" id="s-como-elegir-un-amigo-para-toda-p34">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 3, 4</span>
+          <span class="q-txt">¿Qué nos ayudará a encontrar un buen esposo o esposa? (Proverbios 18:22)</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Seguir la guía de Jehová y los principios de su Palabra, porque él fue quien creó el matrimonio y siempre sabe lo que es mejor para nosotros.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>Antes de tomar una decisión tan grande, hay que pensar con cuidado en los pros y los contras. Jehová no solo quiere que encontremos pareja; quiere que encontremos la persona adecuada para nosotros, y nos ha dado las herramientas para hacerlo bien.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Si estás pensando en casarte, empieza por orar pidiendo a Jehová que te guíe y que te ayude a ver con claridad. Luego estudia qué dice la Biblia sobre las cualidades que debe tener un buen esposo o esposa y úsalas como guía en tu búsqueda.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Es como seguir el manual del fabricante para usar un producto. Jehová 'fabricó' el matrimonio, así que su manual —la Biblia— es la mejor guía para encontrar y construir una buena relación.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Imagina a una hermana que conoce a alguien simpático y atractivo. Antes de emocionarse demasiado, se sienta con la Biblia y con oración, y evalúa si esa persona realmente cumple los criterios que Dios establece. Ese paso la protege de una decisión apresurada.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>Proverbios 18:22 dice que 'el que halla esposa halla algo bueno y recibe el favor de Jehová'. Isaías 48:17, 18 añade que Jehová nos enseña lo que nos conviene. Juntos, estos textos nos recuerdan que encontrar una buena pareja no es cuestión de suerte, sino de caminar de la mano con Jehová en el proceso.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-como-elegir-un-amigo-para-toda-p5">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 5</span>
+          <span class="q-txt">¿Por qué es importante que la persona que elijamos sea un Testigo bautizado?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Porque al bautizarnos llegamos a ser amigos de Dios, y casarse con alguien que también es amigo de Jehová significa que los dos comparten los valores más importantes de la vida.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>Elegir a alguien que no es Testigo puede parecer inofensivo al principio, pero con el tiempo las diferencias espirituales crean fricciones: en cómo criar a los hijos, en cómo manejar el dinero, en las prioridades del tiempo, en la visión de la vida. El 'yugo desigual' se vuelve cada vez más pesado.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Si en este momento te sientes atraído por alguien que no comparte tu fe, hazte esta pregunta honesta: '¿Estaré dispuesto a ceder en mis convicciones para mantener esta relación?' Si la respuesta genera dudas, ya tienes una respuesta.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Es como intentar remar en canoa cuando dos personas van en direcciones opuestas: se gasta el doble de energía y se avanza la mitad. En cambio, cuando los dos reman juntos en la misma dirección, el viaje es mucho más agradable y llegan más lejos.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Una hermana sale con alguien que no es Testigo pensando que 'con el tiempo va a cambiar'. Dos años después, ella ha dejado de ir a las reuniones para que él no se sienta incómodo, y su relación con Jehová se ha debilitado mucho. El problema no era él; era la decisión de empezar por un camino que la Biblia ya había señalado como difícil.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>1 Corintios 7:39 dice que la cristiana es libre de casarse 'solo en el Señor'. 2 Corintios 6:14 advierte sobre estar 'bajo un yugo desigual con los no creyentes'. Estos textos no buscan limitar nuestra felicidad, sino protegerla. Aplicarlos es una muestra de confianza en que Jehová sabe lo que nos conviene.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-como-elegir-un-amigo-para-toda-p67">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 6, 7</span>
+          <span class="q-txt">¿Qué preguntas debe hacerse usted si está interesado en alguien?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Debe preguntarse cómo trata esa persona a su familia, qué clase de amigos tiene, cómo actúa ante los desacuerdos, qué actitud tiene hacia el dinero, si ama profundamente a Jehová y si pueden llegar a ser el mejor amigo el uno del otro.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>Estas preguntas no son para buscar a una persona perfecta —que no existe—, sino para evaluar si esa persona tiene el carácter y los valores que hacen posible una amistad sólida para toda la vida. Lo que vemos en el noviazgo nos da pistas de lo que vendrá en el matrimonio.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Escribe en una hoja las preguntas del artículo y, con honestidad, respóndelas sobre la persona que te interesa. No busques justificar lo que ya sientes; busca ver con claridad lo que hay.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Es como revisar un carro antes de comprarlo: no te quedas solo con lo que ves por fuera. Miras el motor, preguntas el historial, lo llevas a un mecánico de confianza. Una decisión tan grande merece al menos esa diligencia.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Un hermano está interesado en una hermana. Le parece muy espiritual en las reuniones, pero cuando salen a cenar con amigos, nota que ella trata al mesero con desprecio y gasta el dinero sin pensar. Esas observaciones le dicen mucho más sobre su carácter real que cualquier conversación sobre la Biblia.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>Colosenses 3:9, 10 habla de ponerse 'la nueva personalidad', que incluye humildad, paciencia y amor. Preguntarse si la persona a la que uno conoce está realmente esforzándose por vivir esos valores es una de las preguntas más importantes del noviazgo.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-como-elegir-un-amigo-para-toda-p89">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 8, 9</span>
+          <span class="q-txt">¿Qué ayudará a alguien a decidir si debe casarse o no con una persona?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Tratar de averiguar cómo es la persona en realidad, preguntarle a otros sobre su reputación y sus cualidades, y tomar en serio las dudas propias o las preocupaciones que expresen amigos maduros.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>Durante el noviazgo es fácil ver solo lo mejor de la otra persona. Por eso es tan valioso escuchar a quienes la conocen en otros contextos: en su congregación, en su familia, en su trabajo. Ellos pueden confirmar o matizar lo que nosotros vemos.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Si estás en un noviazgo serio, habla con un anciano de confianza o con un matrimonio maduro que conozca bien a tu pareja. No lo hagas para buscar defectos, sino para tener una perspectiva más completa antes de una decisión tan importante.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Es como leer las reseñas de un hotel antes de reservar: no te quedas solo con las fotos oficiales. Buscas la opinión de personas que ya estuvieron ahí. En el caso de una persona, las 'reseñas' son las opiniones de quienes la conocen de verdad.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Sarah, de la Guayana Francesa, antes de comprometerse habló con el compañero de precursorado de Daniel, con un anciano de su congregación y con hermanas que lo conocían. Ese proceso le dio una imagen mucho más completa de quién era él realmente, y le dio paz para tomar su decisión.</p>
+        </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="blk" id="s-pasen-tiempo-juntos">
+      <header class="s-band">
+        <span class="s-ic">⏳</span>
+        <h2>Pasen tiempo juntos</h2>
+      </header>
+      <article class="qcard" id="s-pasen-tiempo-juntos-p10">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 10</span>
+          <span class="q-txt">¿Por qué es bueno que el esposo y la esposa saquen tiempo para estar juntos?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Porque ese tiempo les permite hablar de lo que les pasó durante el día, compartir sus pensamientos y sentimientos más profundos, mostrarse cariño y hacer cosas divertidas juntos, fortaleciendo así su amistad y su matrimonio.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>La calidad del tiempo importa, pero también la cantidad. No basta con cruzarse en casa y hablar de los gastos del mes. Las parejas que se hacen mejores amigos con el tiempo son las que intencionalmente buscan momentos para estar juntos, aunque sea en cosas sencillas.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Esta semana, apaga el teléfono por una hora y dedícale ese tiempo solo a tu cónyuge: una caminata, cocinar algo juntos, ver un video que a los dos les guste. La actividad importa menos que la presencia real.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Una amistad que no se alimenta de tiempo compartido es como una planta sin agua: al principio aguanta, pero poco a poco se va secando. El tiempo juntos es el agua que mantiene viva la relación.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Una pareja decide que cada jueves por la noche es 'su noche': sin compromisos sociales, sin trabajo extra, solo ellos dos. A veces salen, a veces se quedan en casa. Lo que importa es que ese espacio existe y nadie lo invade.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-pasen-tiempo-juntos-p11">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 11</span>
+          <span class="q-txt">¿Qué puede poner en peligro la amistad del esposo y la esposa?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Estar alejados el uno del otro por largos periodos de tiempo, como cuando uno acepta un trabajo en el extranjero. Aunque traiga beneficios económicos, puede causar graves daños en el matrimonio.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>La distancia física prolongada crea una distancia emocional que, si no se cuida mucho, puede volverse permanente. Las parejas que pasan mucho tiempo separadas tienen que hacer un esfuerzo extra para mantener viva la conexión, y no siempre es suficiente.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Si por circunstancias de la vida tú y tu cónyuge deben estar separados un tiempo, hagan un plan concreto para comunicarse con regularidad y fíjense una fecha límite para esa situación. La separación sin fin es la más peligrosa.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Es como dejar una hoguera sola en el bosque: al principio sigue ardiendo, pero sin que alguien la alimente, las brasas se van apagando una a una hasta que solo queda ceniza fría.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Un hermano acepta un contrato de trabajo en otro país por dos años para mejorar la situación económica de la familia. Pero las llamadas van siendo cada vez menos frecuentes, la esposa empieza a tomar todas las decisiones sola, y cuando él regresa, los dos sienten que son casi extraños.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-pasen-tiempo-juntos-p1213">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 12, 13</span>
+          <span class="q-txt">¿Qué han hecho algunos matrimonios para asegurarse de pasar tiempo juntos? ¿Qué importancia debemos darle a la relación con nuestro esposo o esposa?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Han incluido en su horario ratos para estar juntos como cualquier otro asunto importante, han aprendido a disfrutar las actividades del otro, han guardado los teléfonos para no distraerse, y sobre todo han priorizado las actividades espirituales juntos.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>El tiempo espiritual compartido —leer la Biblia juntos, orar juntos, predicar juntos— tiene un efecto especial: une el corazón de los dos con Jehová, y eso refuerza también el vínculo entre ellos. Es el tipo de tiempo juntos con mayor impacto en la relación.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Empieza con algo pequeño: lee con tu cónyuge el texto del día y comenta juntos una cosa que les haya llamado la atención. Ese hábito, repetido cada mañana, puede transformar la calidad de su relación con el tiempo.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Pasar tiempo juntos en actividades espirituales es como trenzar una cuerda con tres hilos: cada conversación, cada oración, cada momento de predicar juntos va añadiendo un hilo más, y la cuerda se hace cada vez más fuerte y difícil de romper.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Myriam, de Francia, empieza el día leyendo la Biblia con su esposo y luego comentan qué les gustó. También oran juntos. Ella dice que escuchar cómo su esposo le habla a Jehová le muestra lo mucho que él ama a Dios, y eso la acerca más a él.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>Proverbios 27:17 dice que 'el hierro afila al hierro, y un hombre afila a su compañero'. Cuando el esposo y la esposa estudian, oran y predican juntos, se están 'afilando' mutuamente: crecen juntos espiritualmente y eso fortalece todos los aspectos de su relación. Amós 3:3 pregunta: '¿Pueden dos caminar juntos si no han acordado hacerlo?' Planear el tiempo juntos es justamente ese acuerdo que hace posible caminar en la misma dirección.</p>
+        </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="blk" id="s-permanezcan-unidos-a-pesar-de-">
+      <header class="s-band">
+        <span class="s-ic">🛡️</span>
+        <h2>Permanezcan unidos a pesar de los problemas</h2>
+      </header>
+      <article class="qcard" id="s-permanezcan-unidos-a-pesar-de--p1415">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 14, 15</span>
+          <span class="q-txt">¿Por qué deben esforzarse el esposo y la esposa por resolver los problemas que aparezcan en su matrimonio?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Porque el matrimonio es muy valioso. Así como se restaura una obra de arte dañada por su gran valor, un matrimonio con problemas puede y debe restaurarse, y Jehová se alegra de ver ese esfuerzo.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>La imperfección humana garantiza que habrá problemas en todo matrimonio. La pregunta no es si van a aparecer, sino qué harán cuando lleguen. Esforzarse por resolver los problemas demuestra amor y respeto mutuo, y también respeto por Jehová, que creó el matrimonio.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>La próxima vez que tengas un conflicto con tu cónyuge, en vez de pensar '¿cómo salgo de esta situación?', pregúntate '¿qué puedo hacer yo para que esto mejore?' Ese cambio de enfoque puede cambiarlo todo.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Un matrimonio con problemas es como un barco que hace un poco de agua. La respuesta correcta no es abandonarlo; es buscar dónde está la fuga y repararla. Si los dos reman y tapan el agujero juntos, el barco sigue navegando.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Un matrimonio atraviesa una crisis después de varios años juntos. En vez de separarse, deciden ir a hablar con los ancianos, leer juntos material sobre el matrimonio y comprometerse a hacer cambios. No es fácil ni rápido, pero dos años después dicen que su relación es más profunda que nunca.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>Malaquías 2:16 muestra que Jehová 'detesta el divorcio'. No porque quiera que la gente sufra, sino porque valora profundamente la unión que él mismo creó. Saber que Jehová se alegra cuando nos esforzamos por restaurar el matrimonio es una motivación poderosa para no rendirse.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-permanezcan-unidos-a-pesar-de--p16">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 16</span>
+          <span class="q-txt">Según 1 Corintios 13:4-8a, ¿qué puede ayudar a un matrimonio que tiene graves problemas?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Preguntarse qué más puede hacer cada uno para fortalecer la amistad, repasar lo que dice la Biblia sobre el amor en 1 Corintios 13, buscar la guía de Jehová, usar los recursos disponibles y apoyarse en los ancianos.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>Cuando hay problemas graves, la tentación es mirar los fallos del otro. Pero el artículo propone algo más difícil y más efectivo: preguntarse qué puede cambiar uno mismo. El amor que describe 1 Corintios 13 —paciente, bondadoso, que no lleva cuentas del mal— es el antídoto real para la mayoría de los conflictos matrimoniales.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Lee 1 Corintios 13:4-8 y elige una sola característica del amor que creas que puedes mejorar esta semana en tu relación. No intentes cambiar todo de golpe; enfócate en una cosa concreta.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Intentar arreglar un matrimonio con problemas sin buscar la guía de Jehová es como tratar de arreglar un electrodoméstico sin leer el manual y sin llamar al técnico. Puedes hacer más daño que bien. Con su ayuda, la reparación tiene muchas más posibilidades de salir bien.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Una pareja que atraviesa una etapa fría en su relación decide no buscar separarse. En cambio, cada uno escoge una faceta del amor de 1 Corintios 13 en la que sabe que falla, y trabaja en ella durante un mes. Al cabo del tiempo, los dos notan el cambio y eso les da esperanza para seguir.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>1 Corintios 13:4-8 describe el amor como algo que 'es sufrido y bondadoso, no lleva cuenta del daño, todo lo soporta'. Aplicar estas palabras en el matrimonio no es sentimentalismo; es una decisión diaria. Eclesiastés 4:12 añade que 'una cuerda triple no se rompe fácilmente': cuando Jehová es el tercer hilo en el matrimonio, la unión tiene una fuerza que ningún problema puede deshacer fácilmente.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-permanezcan-unidos-a-pesar-de--p17">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. 17</span>
+          <span class="q-txt">¿Cómo pueden ser felices quienes están pensando en casarse y quienes ya están casados?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Quienes quieren casarse deben elegir con cuidado a su compañero de vida. Quienes ya están casados deben seguir fortaleciendo su amistad, resolver los problemas apoyándose en Jehová, y así podrán disfrutar de la vida juntos.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>La felicidad en el matrimonio no es un estado que se alcanza una vez y ya está. Es el resultado de decisiones y esfuerzos continuos: elegir bien, invertir tiempo, resolver conflictos, y sobre todo, mantener a Jehová en el centro.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Hagas lo que hagas en tu situación actual —soltero o casado—, da un paso concreto esta semana: ora pidiendo la guía de Jehová para tu relación o para encontrar la persona adecuada. Ese primer paso, con fe, abre la puerta para todo lo demás.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>La felicidad en el matrimonio es como una huerta: hay que elegir bien las semillas (elegir bien a la pareja), preparar bien la tierra (el noviazgo), regarla con regularidad (pasar tiempo juntos) y cuidarla cuando aparecen plagas (resolver los problemas). El resultado es una cosecha abundante y duradera.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Una pareja lleva 30 años casada. Cuando les preguntan su secreto, dicen: 'Desde el principio buscamos a Jehová juntos, y cuando llegaban los problemas, los tres los enfrentábamos juntos. Así que siempre supimos que no estábamos solos.'</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>Eclesiastés 9:9 dice: 'Disfruta de la vida con la esposa que amas'. Esa es la promesa y también el objetivo: que el matrimonio sea una fuente real de alegría. Pero ese disfrute viene cuando los dos se esfuerzan juntos, con Jehová como guía y fundamento.</p>
+        </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="blk" id="s-que-responderia-preguntas-de-r">
+      <header class="s-band">
+        <span class="s-ic">✅</span>
+        <h2>¿Qué respondería? — Preguntas de repaso</h2>
+      </header>
+      <article class="qcard" id="s-que-responderia-preguntas-de-r-pR1">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. R1</span>
+          <span class="q-txt">¿Qué ayudará a un cristiano soltero a elegir bien la persona que será su mejor amiga el resto de su vida?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Seguir la guía de Jehová, elegir a alguien que ya sea su amigo, observar su carácter en diferentes situaciones, preguntar a personas de confianza sobre su reputación y tomar en serio las dudas propias y las de amigos maduros.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>No se trata de buscar a alguien perfecto, sino a alguien con quien se comparten valores fundamentales y con quien existe el potencial de ser mejores amigos con el paso del tiempo.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Si estás soltero, empieza con oración: pídele a Jehová que te guíe. Luego estudia qué dice su Palabra sobre el matrimonio y úsala como lente para evaluar las personas que vayas conociendo.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Elegir bien la pareja es como elegir un buen socio de negocios para toda la vida: no te unes al primero que aparece con buena presencia. Preguntas, observas, te informas y luego decides con cuidado.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Un hermano interesado en una hermana no se deja llevar solo por la atracción. La observa en las reuniones, en el ministerio, en cómo trata a su familia, y además habla con personas que la conocen. Solo después, con oración y esa información, da el siguiente paso.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>Proverbios 18:22 dice que quien halla esposa halla algo bueno y recibe el favor de Jehová. Ese 'hallar' no es al azar: es el resultado de buscar con sabiduría, con oración y siguiendo los principios bíblicos.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-que-responderia-preguntas-de-r-pR2">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. R2</span>
+          <span class="q-txt">¿Qué pueden hacer el esposo y la esposa para fortalecer su amistad?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Sacar tiempo para estar juntos con regularidad, aprender a disfrutar las cosas que le gustan al otro, poner el teléfono a un lado, y sobre todo hacer actividades espirituales juntos como leer la Biblia, orar y predicar.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>Fortalecer la amistad requiere intención. No ocurre solo. Hay que planear, priorizar y cuidar esos momentos como se cuida cualquier otra cosa importante en la vida.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Elige esta semana una actividad que le guste a tu cónyuge y proponte hacerla juntos, aunque no sea lo que más te llama a ti. Ese gesto de interés genuino habla más que muchas palabras.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Una amistad matrimonial fuerte es como un músculo: si lo ejercitas regularmente, se fortalece. Si lo dejas quieto, se atrofia. El ejercicio son los momentos compartidos, las conversaciones reales y los proyectos espirituales juntos.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Damien, un hermano de Francia, empezó a interesarse en las cosas que le gustaban a su esposa. Con el tiempo las empezó a disfrutar también. Katie guarda el teléfono cuando están juntos. Leah y su esposo pocas veces van a eventos sin el otro. Cada uno encontró su forma, pero todos invierten tiempo real.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>Proverbios 27:17 compara la amistad con el hierro que afila al hierro. Cuando el esposo y la esposa estudian juntos la Biblia, oran juntos y comparten el ministerio, se están 'afilando' mutuamente: se hacen mejores personas y mejores amigos al mismo tiempo.</p>
+        </div>
+        </div>
+      </article>
+      <article class="qcard" id="s-que-responderia-preguntas-de-r-pR3">
+        <button class="q-hd" type="button" onclick="return toggleCard(this);" ontouchend="return toggleCard(this);">
+          <span class="q-num">Párr. R3</span>
+          <span class="q-txt">¿Qué puede ayudar a un matrimonio a permanecer unido a pesar de los problemas?</span>
+          <span class="q-arr" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="q-bd">
+        <div class="ans a-directa">
+          <div class="ans-lbl"><span>🎯</span>Respuesta directa</div>
+          <p>Preguntarse qué puede hacer cada uno para fortalecer la relación, aplicar el amor descrito en 1 Corintios 13, buscar la guía de Jehová, usar los recursos disponibles en la organización y hablar con los ancianos.</p>
+        </div>
+        <div class="ans a-complemento">
+          <div class="ans-lbl"><span>🧩</span>Para complementar</div>
+          <p>La clave está en cambiar la pregunta: en vez de '¿cómo salgo de este matrimonio?', preguntarse '¿cómo entro de nuevo en el corazón de mi pareja?' Ese cambio de enfoque lo cambia todo.</p>
+        </div>
+        <div class="ans a-aplicacion">
+          <div class="ans-lbl"><span>🌱</span>En la vida diaria</div>
+          <p>Si estás pasando por una etapa difícil en tu matrimonio, da este paso: habla con un anciano esta semana. No esperes a que la situación empeore. La ayuda está disponible y usarla es una muestra de sabiduría, no de debilidad.</p>
+        </div>
+        <div class="ans a-analogia">
+          <div class="ans-lbl"><span>🔗</span>Analogía</div>
+          <p>Un matrimonio que enfrenta problemas y busca ayuda es como un barco que pide apoyo al guardacostas: no es señal de que el barco sea malo, sino de que sus capitanes son responsables y quieren llegar a buen puerto.</p>
+        </div>
+        <div class="ans a-ejemplo">
+          <div class="ans-lbl"><span>💡</span>Ejemplo práctico</div>
+          <p>Una pareja con serios problemas decide leer juntos material sobre el matrimonio y reunirse con los ancianos. No mejora de un día para otro, pero cada recurso que usan va añadiendo herramientas para construir algo mejor.</p>
+        </div>
+        <div class="ans a-texto">
+          <div class="ans-lbl"><span>📖</span>Texto bíblico y aplicación</div>
+          <p>Eclesiastés 4:12 dice que 'una cuerda triple no se rompe fácilmente'. Cuando Jehová es el tercer hilo en el matrimonio, los problemas no tienen la última palabra. La pareja que ora junta, estudia junta y busca a Jehová juntos tiene una fortaleza que los problemas solos no pueden vencer.</p>
+        </div>
+        </div>
+      </article>
+    </section>
+
+  <div class="closing">
+    <p class="ctitle">Idea final para meditar</p>
+    <p>Jehová desea que sus siervos sean felices, ya sea que estén pensando en casarse o que ya estén casados.
+    La amistad en el matrimonio es como una planta viva: necesita atención, tiempo y amor para florecer.
+    Con Jehová como cimiento, esa amistad puede crecer y resistir cualquier tormenta.</p>
+  </div>
+
+</main>
+
+<footer>Guía de estudio personal &middot; Sigan fortaleciendo su amistad como matrimonio</footer>
+
+
+
+<script>
+var _studyOn = false;
+var _allClosed = false;
+
+function toggleCard(el) {
+  var card = el;
+  while (card && !card.classList.contains('qcard')) {
+    card = card.parentElement;
+  }
+  if (!card) return;
+  if (card.classList.contains('closed')) {
+    card.classList.remove('closed');
+  } else {
+    card.classList.add('closed');
+  }
+  return false;
+}
+
+function toggleIdx() {
+  var ibox = document.getElementById('indice');
+  if (!ibox) return;
+  if (ibox.classList.contains('closed')) {
+    ibox.classList.remove('closed');
+  } else {
+    ibox.classList.add('closed');
+  }
+  return false;
+}
+
+function toggleStudy() {
+  _studyOn = !_studyOn;
+  var lbl = document.getElementById('studyLbl');
+  if (lbl) lbl.textContent = _studyOn ? 'activado' : 'desactivado';
+  var cards = document.querySelectorAll('.qcard');
+  for (var i = 0; i < cards.length; i++) {
+    if (_studyOn) {
+      cards[i].classList.add('closed');
+    } else {
+      cards[i].classList.remove('closed');
+    }
+  }
+  if (_studyOn) { window.scrollTo(0, 0); }
+  return false;
+}
+
+function toggleAll() {
+  _allClosed = !_allClosed;
+  var cards = document.querySelectorAll('.qcard');
+  for (var i = 0; i < cards.length; i++) {
+    if (_allClosed) {
+      cards[i].classList.add('closed');
+    } else {
+      cards[i].classList.remove('closed');
+    }
+  }
+  var btn = document.getElementById('btnAll');
+  if (btn) btn.textContent = _allClosed ? '↕ Expandir todo' : '↕ Contraer todo';
+  return false;
+}
+
+function doPrint() {
+  window.print();
+  return false;
+}
+
+function goToCard(targetId) {
+  var card = document.getElementById(targetId);
+  if (!card) return false;
+  if (card.classList.contains('closed')) {
+    card.classList.remove('closed');
+  }
+  setTimeout(function() {
+    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+  return false;
+}
+</script>
+</body>
+</html>
