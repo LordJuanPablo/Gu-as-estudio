@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>20-26 de julio · Jeremías 18-19 · Guía de comentarios</title>
+<style>
+  :root{
+    --bg:#F5F7FF;
+    --primary:#4A3FA0;
+    --primary-dark:#372E7A;
+    --ink:#2B2740;
+    --muted:#6B6684;
+    --card-bg:#FFFFFF;
+
+    /* Sección 1 · Tesoros de la Biblia — naranja terracota cálido */
+    --s1-bg:#FFE8D6;
+    --s1-accent:#D9662E;
+    --s1-accent-dark:#A34D22;
+    --s1-soft:#FFCFA3;
+
+    /* Sección 2 · Nuestra vida cristiana — mostaza/ámbar dorado cálido */
+    --s2-bg:#FFEEBF;
+    --s2-accent:#C98A14;
+    --s2-accent-dark:#8F6109;
+    --s2-soft:#FFDD85;
+
+    /* Sección 3 · Estudio bíblico de la congregación — ladrillo/coral cálido */
+    --s3-bg:#FBDCD2;
+    --s3-accent:#C24E36;
+    --s3-accent-dark:#8F3924;
+    --s3-soft:#F3B7A4;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:18px;
+    line-height:1.55;
+    -webkit-text-size-adjust:100%;
+    padding-bottom:60px;
+  }
+
+  a{color:var(--primary);}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);
+    color:#fff;
+    padding:34px 20px 28px;
+    text-align:center;
+  }
+  .hero .eyebrow{
+    font-size:14px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    opacity:.85;
+    margin-bottom:6px;
+  }
+  .hero h1{
+    margin:0 0 8px;
+    font-size:26px;
+    line-height:1.3;
+  }
+  .hero p{
+    margin:0;
+    font-size:16px;
+    opacity:.9;
+  }
+
+  /* NAV pegajosa */
+  .nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:#fff;
+    border-bottom:1px solid #E3E1F5;
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding:10px 12px;
+    -webkit-overflow-scrolling:touch;
+  }
+  .nav a{
+    flex:0 0 auto;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+    padding:8px 14px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+  .nav a.chip1{background:var(--s1-soft);color:var(--s1-accent-dark);}
+  .nav a.chip2{background:var(--s2-soft);color:var(--s2-accent-dark);}
+  .nav a.chip3{background:var(--s3-soft);color:var(--s3-accent-dark);}
+
+  /* BOTONES DE HERRAMIENTAS */
+  .toolbar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    padding:16px 16px 4px;
+    justify-content:center;
+  }
+  .btn{
+    border:none;
+    background:var(--primary);
+    color:#fff;
+    padding:11px 16px;
+    border-radius:12px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .btn.secondary{
+    background:#fff;
+    color:var(--primary);
+    border:2px solid var(--primary);
+  }
+  .btn.active{
+    background:var(--primary-dark);
+  }
+
+  /* INDICE */
+  .index-wrap{padding:14px 16px;}
+  .index-toggle{
+    width:100%;
+    text-align:left;
+    background:#fff;
+    border:1px solid #E3E1F5;
+    border-radius:14px;
+    padding:14px 16px;
+    font-size:16px;
+    font-weight:700;
+    color:var(--primary-dark);
+    cursor:pointer;
+  }
+  .index-body{
+    display:none;
+    background:#fff;
+    border:1px solid #E3E1F5;
+    border-top:none;
+    border-radius:0 0 14px 14px;
+    padding:6px 16px 12px;
+  }
+  .index-body.open{display:block;}
+  .index-group h4{
+    margin:14px 0 6px;
+    font-size:13px;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+  }
+  .index-group.g1 h4{color:var(--s1-accent-dark);}
+  .index-group.g2 h4{color:var(--s2-accent-dark);}
+  .index-group.g3 h4{color:var(--s3-accent-dark);}
+  .index-body ul{margin:0;padding-left:18px;}
+  .index-body li{margin:5px 0;}
+  .index-body a{font-size:15px;text-decoration:none;}
+
+  /* SECCIONES */
+  .section{
+    margin:22px 12px;
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid rgba(0,0,0,.04);
+  }
+  .section-head{
+    padding:18px 18px 14px;
+  }
+  .section1{background:var(--s1-bg);}
+  .section2{background:var(--s2-bg);}
+  .section3{background:var(--s3-bg);}
+
+  .section1 .section-head{background:var(--s1-accent);}
+  .section2 .section-head{background:var(--s2-accent);}
+  .section3 .section-head{background:var(--s3-accent);}
+
+  .section-head h2{
+    margin:0;
+    color:#fff;
+    font-size:20px;
+  }
+  .section-head p{
+    margin:4px 0 0;
+    color:rgba(255,255,255,.92);
+    font-size:14px;
+  }
+
+  .section-inner{padding:14px 14px 18px;}
+
+  .subhead{
+    font-size:15px;
+    font-weight:700;
+    margin:18px 4px 8px;
+  }
+  .section1 .subhead{color:var(--s1-accent-dark);}
+  .section2 .subhead{color:var(--s2-accent-dark);}
+  .section3 .subhead{color:var(--s3-accent-dark);}
+
+  /* TARJETAS */
+  .card{
+    background:var(--card-bg);
+    border-radius:14px;
+    margin:10px 0;
+    overflow:hidden;
+    box-shadow:0 1px 3px rgba(43,39,64,.08);
+  }
+  .card-header{
+    padding:14px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    cursor:pointer;
+    gap:10px;
+  }
+  .card-header .qtxt{
+    font-weight:700;
+    font-size:16.5px;
+  }
+  .section1 .card-header{border-left:6px solid var(--s1-accent);}
+  .section2 .card-header{border-left:6px solid var(--s2-accent);}
+  .section3 .card-header{border-left:6px solid var(--s3-accent);}
+
+  .chev{
+    flex:0 0 auto;
+    font-size:14px;
+    color:var(--muted);
+    transition:transform .2s ease;
+  }
+  .card.open .chev{transform:rotate(180deg);}
+
+  .card-body{
+    display:none;
+    padding:0 16px 16px;
+  }
+  .card.open .card-body{display:block;}
+
+  .block{
+    margin:10px 0;
+    padding:12px 14px;
+    border-radius:10px;
+    font-size:16px;
+  }
+  .label{
+    display:block;
+    font-size:12.5px;
+    font-weight:800;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+    margin-bottom:4px;
+  }
+
+  .b-directa{background:#EEF1FF;}
+  .b-directa .label{color:#4A3FA0;}
+
+  .b-complemento{background:#E9F7EF;}
+  .b-complemento .label{color:#2E8B57;}
+
+  .b-jehova{background:#FFF4E3;}
+  .b-jehova .label{color:#B8860B;}
+
+  .b-familia{background:#FDE8EF;}
+  .b-familia .label{color:#C2185B;}
+
+  .b-congregacion{background:#E6F3FF;}
+  .b-congregacion .label{color:#1565C0;}
+
+  .b-predicacion{background:#F1E9FB;}
+  .b-predicacion .label{color:#6A3FA0;}
+
+  .b-perla{background:#F4FBF0;}
+  .b-perla .label{color:#3E7D32;}
+
+  .b-video{background:#FFF0F0;}
+  .b-video .label{color:#B4453D;}
+
+  .b-personal{background:#E0F7FA;}
+  .b-personal .label{color:#00838F;}
+
+  .b-aplicacion{background:#FFE8D2;}
+  .b-aplicacion .label{color:#B85D0E;}
+
+  .b-analogia{background:#DFF5EA;}
+  .b-analogia .label{color:#147D5F;}
+
+  .b-ejemplo{background:#FFE1DE;}
+  .b-ejemplo .label{color:#C2503A;}
+
+  .b-textobiblico{background:#FFF7DE;}
+  .b-textobiblico .label{color:#9C7A12;}
+
+  .nota{
+    font-size:14px;
+    font-style:italic;
+    color:var(--muted);
+    margin:6px 0 12px;
+  }
+
+  /* REFLEXION FINAL */
+  .reflexion{
+    margin:26px 12px;
+    padding:22px 18px;
+    background:var(--primary);
+    color:#fff;
+    border-radius:18px;
+  }
+  .reflexion h3{margin:0 0 8px;font-size:18px;}
+  .reflexion p{margin:0;font-size:16px;line-height:1.6;opacity:.95;}
+
+  footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:13px;
+    padding:22px 16px 10px;
+  }
+
+  @media print{
+    .nav,.toolbar,.index-wrap{display:none !important;}
+    .card-body{display:block !important;}
+    .chev{display:none;}
+    body{background:#fff;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="eyebrow">20-26 de julio · Jeremías 18, 19</div>
+    <h1>Guía de comentarios para la reunión</h1>
+    <p>Vida y Ministerio Cristianos · Tesoros de la Biblia · Nuestra vida cristiana · Estudio bíblico de la congregación</p>
+  </div>
+
+  <div class="nav">
+    <a class="chip1" href="#sec1" onclick="return true;">🧡 Tesoros de la Biblia</a>
+    <a class="chip2" href="#sec2" onclick="return true;">💛 Nuestra vida cristiana</a>
+    <a class="chip3" href="#sec3" onclick="return true;">🌸 Estudio bíblico</a>
+  </div>
+
+  <div class="toolbar">
+    <button class="btn" id="btnRepaso" onclick="toggleRepaso(); return false;" ontouchend="toggleRepaso(); return false;">🧠 Modo repaso</button>
+    <button class="btn secondary" id="btnExpand" onclick="toggleExpandAll(); return false;" ontouchend="toggleExpandAll(); return false;">Expandir todo</button>
+    <button class="btn secondary" onclick="window.print(); return false;" ontouchend="window.print(); return false;">🖨️ Imprimir</button>
+  </div>
+
+  <div class="index-wrap">
+    <button class="index-toggle" onclick="toggleIndex(); return false;" ontouchend="toggleIndex(); return false;">📖 Índice rápido</button>
+    <div class="index-body" id="indexBody">
+
+      <div class="index-group g1">
+        <h4>Tesoros de la Biblia</h4>
+        <ul>
+          <li><a href="#s1q1" onclick="return goTo('s1q1');" ontouchend="return goTo('s1q1');">¿Por qué decimos que Jehová es el Gran Alfarero?</a></li>
+          <li><a href="#s1q2" onclick="return goTo('s1q2');" ontouchend="return goTo('s1q2');">¿Qué perlas espirituales encontraste? (Jeremías 18 y 19)</a></li>
+        </ul>
+      </div>
+
+      <div class="index-group g2">
+        <h4>Nuestra vida cristiana</h4>
+        <ul>
+          <li><a href="#s2q1" onclick="return goTo('s2q1');" ontouchend="return goTo('s2q1');">Video: Cambié mi vida por completo</a></li>
+        </ul>
+      </div>
+
+      <div class="index-group g3">
+        <h4>Estudio bíblico de la congregación</h4>
+        <ul>
+          <li><a href="#s3q1" onclick="return goTo('s3q1');" ontouchend="return goTo('s3q1');">Introducción — Preguntas 1 a 11</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECCIÓN 1 · TESOROS DE LA BIBLIA -->
+  <!-- ============================================================ -->
+  <div class="section section1" id="sec1">
+    <div class="section-head">
+      <h2>🧡 Tesoros de la Biblia</h2>
+      <p>Punto 2 · Busquemos perlas escondidas</p>
+    </div>
+    <div class="section-inner">
+
+      <div class="card" id="s1q1">
+        <div class="card-header" onclick="toggleCard('s1q1'); return false;" ontouchend="toggleCard('s1q1'); return false;">
+          <span class="qtxt">Jer 18:6; 19:10, 11. ¿Por qué decimos que Jehová es el Gran Alfarero?</span>
+          <span class="chev">▾</span>
+        </div>
+        <div class="card-body">
+          <div class="block b-directa">
+            <span class="label">Respuesta directa</span>
+            Porque, igual que un alfarero tiene control total sobre el barro para darle la forma que quiere, Jehová tiene soberanía sobre las personas y las naciones. La casa de Israel era para él "como el barro en la mano del alfarero".
+          </div>
+          <div class="block b-complemento">
+            <span class="label">Complemento (30 seg.)</span>
+            Así como un alfarero puede aplastar una vasija defectuosa, Jehová puede traer corrección o incluso calamidad sobre un pueblo que actúa mal, sin que nadie esté en posición de reclamarle, igual que el barro no le reclama a quien le da forma.
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="s1q2">
+        <div class="card-header" onclick="toggleCard('s1q2'); return false;" ontouchend="toggleCard('s1q2'); return false;">
+          <span class="qtxt">¿Qué perlas espirituales ha encontrado en la lectura bíblica de esta semana? (Jeremías 18 y 19)</span>
+          <span class="chev">▾</span>
+        </div>
+        <div class="card-body">
+
+          <div class="subhead">Jeremías 18</div>
+
+          <div class="block b-perla">
+            <span class="label">Jeremías 18:4</span>
+            El alfarero rehace la vasija estropeada en otra distinta, sin desecharla. Esto me enseña que cuando siento que arruiné algo en mi vida, Jehová no me tira a la basura: él puede rehacerme si me dejo moldear, aunque el resultado no sea exactamente lo que yo tenía planeado.
+          </div>
+
+          <div class="block b-perla">
+            <span class="label">Jeremías 18:11, 12</span>
+            Jehová les rogó que cambiaran, pero ellos dijeron "es inútil" y siguieron su propio camino. Esto me enseña que el mayor obstáculo para cambiar casi nunca es Jehová; soy yo misma cuando decido de antemano que "ya no tiene caso intentarlo".
+          </div>
+
+          <div class="block b-perla">
+            <span class="label">Jeremías 18:18</span>
+            Algunos planearon atacar a Jeremías con sus propias palabras solo por hablar de parte de Jehová. Esto me enseña que hacer lo correcto no siempre me va a traer aplausos, y que debo estar dispuesta a seguir siendo fiel aunque eso incomode a otros.
+          </div>
+
+          <div class="subhead">Jeremías 19</div>
+
+          <div class="block b-perla">
+            <span class="label">Jeremías 19:1</span>
+            Jehová le pide a Jeremías comprar una vasija de barro antes de anunciar el mensaje. Esto me enseña que Jehová se toma su tiempo para preparar bien las cosas importantes; nada de lo que él hace es improvisado, y eso también aplica a cómo me está formando a mí.
+          </div>
+
+          <div class="block b-perla">
+            <span class="label">Jeremías 19:10, 11</span>
+            Jeremías rompe la vasija frente a todos para mostrar que ese pueblo quedaría destruido sin remedio. Esto me enseña que las decisiones que tomo hoy sí importan a largo plazo; no todo se puede "reparar después" tan fácilmente como pienso.
+          </div>
+
+          <div class="block b-perla">
+            <span class="label">Jeremías 19:4, 5</span>
+            El pueblo llegó a hacer algo que ni siquiera había pasado por la mente de Jehová. Esto me enseña que alejarse poco a poco de Jehová puede llevar a lugares que ni yo misma imaginaba al principio; por eso prefiero cortar por lo sano antes, no después.
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECCIÓN 2 · NUESTRA VIDA CRISTIANA -->
+  <!-- ============================================================ -->
+  <div class="section section2" id="sec2">
+    <div class="section-head">
+      <h2>💛 Nuestra vida cristiana</h2>
+      <p>Punto 7 · Pasos para recuperarnos en sentido espiritual</p>
+    </div>
+    <div class="section-inner">
+
+      <div class="card" id="s2q1">
+        <div class="card-header" onclick="toggleCard('s2q1'); return false;" ontouchend="toggleCard('s2q1'); return false;">
+          <span class="qtxt">Video: "Cambié mi vida por completo" — ¿Qué nos enseña este video?</span>
+          <span class="chev">▾</span>
+        </div>
+        <div class="card-body">
+          <div class="block b-familia">
+            <span class="label">Familia</span>
+            Ella pensó que quedar embarazada en esas circunstancias arruinaba todo, pero el anciano le mostró otra mirada: esa niña podía crecer conociendo a Jehová desde el principio. Esto me enseña que una situación familiar que parece un error no define el futuro; puedo decidir, desde ahora, qué voy a enseñarles a los míos, sin cargar con la vergüenza de cómo empezó todo.
+          </div>
+
+          <div class="block b-predicacion">
+            <span class="label">Predicación</span>
+            Sus tíos no la juzgaron, y el anciano la trató con una bondad que ella no esperaba. Esto me enseña que en el territorio voy a encontrarme con personas que sienten que su vida está demasiado arruinada para acercarse a Jehová, y mi papel no es juzgarlas, sino mostrarles, como ese anciano, que todavía hay una salida buena para ellas.
+          </div>
+
+          <div class="block b-personal">
+            <span class="label">Vida personal</span>
+            Después de 15 años alejada, su primer paso no fue un plan perfecto, fue simplemente volver a orar. Esto me enseña que no necesito tener resuelto todo mi desorden antes de acercarme de nuevo a Jehová; el primer paso puede ser tan sencillo como una oración honesta, aunque el resto de mi vida siga hecho un lío.
+          </div>
+
+          <div class="block b-jehova">
+            <span class="label">Qué me enseña este video de Jehová</span>
+            Ella dice que un solo día después de orar, la respuesta tocó a su puerta. Esto me enseña que Jehová no hace esperar a quien vuelve a él de corazón sincero, sin importar cuántos años haya estado lejos. En su peor momento, cuando se sentía una fracasada, fue él quien, por medio de ese anciano, le mostró que no venía a cobrarle nada, sino a darle una nueva oportunidad.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECCIÓN 3 · ESTUDIO BÍBLICO DE LA CONGREGACIÓN -->
+  <!-- ============================================================ -->
+  <div class="section section3" id="sec3">
+    <div class="section-head">
+      <h2>🌸 Estudio bíblico de la congregación</h2>
+      <p>Punto 8 · "¡Usted puede ser cada vez más valiente!" — Carta del Cuerpo Gobernante e introducción</p>
+    </div>
+    <div class="section-inner">
+
+      <div class="nota">La "Carta del Cuerpo Gobernante" no lleva desarrollo, tal como se indicó.</div>
+
+      <div class="subhead">Introducción</div>
+
+      <div class="card" id="s3q1">
+        <div class="card-header" onclick="toggleCard('s3q1'); return false;" ontouchend="toggleCard('s3q1'); return false;">
+          <span class="qtxt">Preguntas 1 a 11 de la introducción</span>
+          <span class="chev">▾</span>
+        </div>
+        <div class="card-body">
+
+          <div class="nota">Preguntas 1-3. ¿Por qué demostró Jesús que era valiente cuando dijo: "Levántense, vámonos"?</div>
+          <div class="block b-directa">
+            <span class="label">Respuesta directa</span>
+            Porque, sabiendo que un grupo armado venía a arrestarlo y que enfrentaría la peor prueba de su vida, Jesús no huyó ni pidió ayuda angelical; simplemente se levantó y fue directo al peligro.
+          </div>
+          <div class="block b-complemento">
+            <span class="label">Complemento</span>
+            Jesús estaba en Getsemaní, sabía exactamente lo que le esperaba —tortura y muerte— y aun así avanzó por amor a Jehová y a sus discípulos, no por obligación ni por no tener otra opción.
+          </div>
+          <div class="block b-aplicacion">
+            <span class="label">Aplicación en la vida diaria</span>
+            Cuando algo difícil me espera, como una conversación incómoda o una decisión que me da miedo tomar, en vez de posponerlo o buscar excusas, puedo simplemente "levantarme e ir", como hizo Jesús, confiando en que Jehová está conmigo en el proceso.
+          </div>
+          <div class="block b-analogia">
+            <span class="label">Analogía de la vida diaria</span>
+            Es como cuando sabes que tienes que hacer una llamada difícil o enfrentar algo que llevas evitando. Jesús no se quedó dando vueltas esperando que el problema se resolviera solo; se levantó y fue directo a lo que tenía que enfrentar.
+          </div>
+          <div class="block b-ejemplo">
+            <span class="label">Ejemplo sencillo y práctico</span>
+            Si esta semana tengo que decirle algo incómodo pero necesario a alguien, en vez de seguir postergándolo por miedo a su reacción, puedo tomar la decisión, como Jesús, de simplemente hacerlo en el momento adecuado, sin huir de ello.
+          </div>
+          <div class="block b-textobiblico">
+            <span class="label">Texto bíblico y su aplicación</span>
+            En Mateo 26:53, Jesús deja claro que pudo pedir ayuda angelical para evitar el sufrimiento, pero no lo hizo. Esto me enseña que a veces tengo recursos para "escapar" de una situación difícil, pero la fidelidad a Jehová a veces significa enfrentar las cosas en vez de buscar la salida fácil.
+          </div>
+
+          <div class="nota">Preguntas 4, 5. ¿Qué clase de valor demostró Jesús, y por qué necesitamos imitarlo?</div>
+          <div class="block b-directa">
+            <span class="label">Respuesta directa</span>
+            Su valor no fue temeridad ni sentirse invencible; fue la fuerza interior para hacer lo que Jehová quiere aunque dé miedo o sea difícil.
+          </div>
+          <div class="block b-complemento">
+            <span class="label">Complemento</span>
+            Necesitamos imitarlo porque vivimos en una época peligrosa donde ese mismo tipo de valentía —no la que ignora el peligro, sino la que actúa a pesar de él— es indispensable para mantenernos fieles.
+          </div>
+          <div class="block b-aplicacion">
+            <span class="label">Aplicación en la vida diaria</span>
+            Puedo recordar que ser valiente no significa no sentir miedo antes de dar un comentario o hablar con alguien en el ministerio; significa hacerlo aunque el miedo esté presente, porque es lo que Jehová quiere de mí.
+          </div>
+          <div class="block b-analogia">
+            <span class="label">Analogía de la vida diaria</span>
+            Es como la diferencia entre alguien que se avienta sin pensar por presumir, y un bombero que entra a un edificio en llamas sabiendo el riesgo, pero haciéndolo con propósito. El valor de Jesús se parece más a esto último.
+          </div>
+          <div class="block b-ejemplo">
+            <span class="label">Ejemplo sencillo y práctico</span>
+            Si me da miedo participar en el ministerio esta semana, puedo recordar que el valor no es sentir cero miedo, sino salir de todas formas, confiando en que Jehová aprecia el esfuerzo aunque las piernas me tiemblen.
+          </div>
+          <div class="block b-textobiblico">
+            <span class="label">Texto bíblico y su aplicación</span>
+            Salmo 11:5 contrasta el valor de Jesús con la actitud de las personas violentas, que actúan sin pensar en las consecuencias. Esto me enseña que mi valentía no debe parecerse a la imprudencia, sino a una decisión consciente de hacer lo correcto.
+          </div>
+
+          <div class="nota">Pregunta 6. Si sentimos que nos falta valor, ¿cómo puede animarnos la forma en que trató Jesús a sus discípulos?</div>
+          <div class="block b-directa">
+            <span class="label">Respuesta directa</span>
+            Jesús fue comprensivo con las debilidades de sus discípulos, como cuando no pudieron mantenerse despiertos en Getsemaní, y aun así les habló con cariño.
+          </div>
+          <div class="block b-complemento">
+            <span class="label">Complemento</span>
+            Eso nos anima porque significa que Jesús no espera de nosotros más de lo que realmente podemos dar; entiende nuestras limitaciones tan bien como entendió las de ellos.
+          </div>
+          <div class="block b-aplicacion">
+            <span class="label">Aplicación en la vida diaria</span>
+            Cuando siento que fallé, por ejemplo si me quedé callada cuando debí decir algo, o si el cansancio me ganó esta semana, puedo tratarme con la misma paciencia que Jesús tuvo con sus discípulos, en vez de castigarme mentalmente.
+          </div>
+          <div class="block b-analogia">
+            <span class="label">Analogía de la vida diaria</span>
+            Es como un entrenador que sabe que su alumno todavía no domina la técnica, pero en vez de gritarle por sus errores, lo anima recordándole que está progresando. Así trató Jesús a sus discípulos cuando fallaron.
+          </div>
+          <div class="block b-ejemplo">
+            <span class="label">Ejemplo sencillo y práctico</span>
+            Si esta semana no logro hacer todo lo que me propuse espiritualmente, en vez de sentir que decepcioné a Jehová, puedo recordar que él entiende mis límites, igual que Jesús entendió los de sus apóstoles esa noche.
+          </div>
+          <div class="block b-textobiblico">
+            <span class="label">Texto bíblico y su aplicación</span>
+            En Mateo 26:41, Jesús les dice con cariño: "el espíritu está dispuesto, pero la carne es débil". Esto me enseña que Jehová no ve mis fallas como excusa para rechazarme, sino que entiende la diferencia entre mis intenciones y mis limitaciones humanas.
+          </div>
+
+          <div class="nota">Preguntas 7, 8. ¿Cómo sabemos que Jesús confía en sus discípulos y quiere ayudarlos a ser valientes?</div>
+          <div class="block b-directa">
+            <span class="label">Respuesta directa</span>
+            Lo sabemos porque les dijo directamente "sean valientes", y animó repetidamente a personas asustadas, como al paralítico y a una mujer temerosa.
+          </div>
+          <div class="block b-complemento">
+            <span class="label">Complemento</span>
+            Incluso resucitado siguió haciéndolo, como cuando le dijo a Pablo "ten valor" en un momento de peligro real; su interés en fortalecernos no terminó con su vida terrenal.
+          </div>
+          <div class="block b-aplicacion">
+            <span class="label">Aplicación en la vida diaria</span>
+            Puedo recordar que si Jesús confió en discípulos imperfectos como Pedro o Pablo, también confía en mí, aunque yo sienta que no tengo lo necesario para hacer algo que me da miedo, como dar un discurso o iniciar una conversación bíblica.
+          </div>
+          <div class="block b-analogia">
+            <span class="label">Analogía de la vida diaria</span>
+            Es como cuando un jefe le da a alguien una responsabilidad importante porque de verdad cree que puede hacerlo. Así animó Jesús a personas como el paralítico o la mujer asustada: no por cortesía, sino porque confiaba en que podían salir adelante.
+          </div>
+          <div class="block b-ejemplo">
+            <span class="label">Ejemplo sencillo y práctico</span>
+            La próxima vez que me sienta insegura antes de hacer algo por Jehová, puedo recordar las palabras de Jesús a Pablo en un momento de verdadero peligro, "¡Ten valor!", y aplicármelas a mí misma en mi propia situación.
+          </div>
+          <div class="block b-textobiblico">
+            <span class="label">Texto bíblico y su aplicación</span>
+            En Juan 16:33, Jesús dice "sean valientes, que yo he vencido al mundo". Esto me enseña que mi valentía no depende de mis propias fuerzas, sino de que Jesús ya venció lo que a mí me da miedo enfrentar; puedo apoyarme en esa victoria suya.
+          </div>
+
+          <div class="nota">Pregunta 9. ¿Cómo nos ayuda la Palabra de Dios a ser más valientes?</div>
+          <div class="block b-directa">
+            <span class="label">Respuesta directa</span>
+            Porque está llena de relatos reales de personas imperfectas, con los mismos sentimientos que nosotros, que enfrentaron peligros y salieron adelante con la ayuda de Jehová.
+          </div>
+          <div class="block b-complemento">
+            <span class="label">Complemento</span>
+            Ver que ellos, con debilidades parecidas a las nuestras, lograron ser valientes nos anima a pensar que nosotros también podemos, sin sentirnos una excepción.
+          </div>
+          <div class="block b-aplicacion">
+            <span class="label">Aplicación en la vida diaria</span>
+            Cuando siento que mi situación es única o que nadie entendería mis miedos, puedo leer sobre alguien en la Biblia que sintió algo parecido y encontrar ahí valor real, no solo palabras bonitas.
+          </div>
+          <div class="block b-analogia">
+            <span class="label">Analogía de la vida diaria</span>
+            Es como cuando alguien que ya pasó por lo mismo que tú te cuenta su experiencia; te da más confianza que un consejo teórico. La Biblia funciona así: son historias de personas reales que lograron ser valientes.
+          </div>
+          <div class="block b-ejemplo">
+            <span class="label">Ejemplo sencillo y práctico</span>
+            La próxima vez que sienta que mi problema es "demasiado" o vergonzoso, puedo buscar en la Biblia a alguien que haya pasado por algo similar, como Elías, y recordar que Jehová también lo ayudó a él a seguir adelante.
+          </div>
+          <div class="block b-textobiblico">
+            <span class="label">Texto bíblico y su aplicación</span>
+            Santiago 5:17 dice que Elías tenía "los mismos sentimientos que nosotros". Esto me enseña que los personajes bíblicos no eran héroes de otra categoría; eran personas normales con miedos reales, y si Jehová los ayudó a ellos, también puede ayudarme a mí.
+          </div>
+
+          <div class="nota">Preguntas 10, 11. ¿A qué lo ayudará este libro, y cómo puede sacarle el máximo provecho?</div>
+          <div class="block b-directa">
+            <span class="label">Respuesta directa</span>
+            El libro, con 54 capítulos, busca ayudarnos a ser cada vez más valientes mostrando cómo Jehová ayudó a personas imperfectas a armarse de valor.
+          </div>
+          <div class="block b-complemento">
+            <span class="label">Complemento</span>
+            Para aprovecharlo al máximo conviene leer el relato, investigar sobre el personaje, fijarse en las imágenes, reflexionar en las lecciones prácticas y ver el propósito completo de Jehová, no solo leerlo de corrido.
+          </div>
+          <div class="block b-aplicacion">
+            <span class="label">Aplicación en la vida diaria</span>
+            Puedo aprovechar este libro deteniéndome, capítulo por capítulo, a preguntarme qué haría yo en la situación de esa persona, y aplicarlo a algo concreto que esté enfrentando esa semana.
+          </div>
+          <div class="block b-analogia">
+            <span class="label">Analogía de la vida diaria</span>
+            Es como tener 54 mentores distintos, cada uno con una historia diferente, que ya pasaron por miedos reales y salieron adelante con la ayuda de Jehová. No es solo un libro de historia, es una guía práctica hecha de ejemplos reales.
+          </div>
+          <div class="block b-ejemplo">
+            <span class="label">Ejemplo sencillo y práctico</span>
+            Podría dedicar un momento fijo a la semana, en mi adoración personal, para leer un capítulo completo y anotar una lección concreta que pueda aplicar esos días, en vez de solo leerlo por cumplir.
+          </div>
+          <div class="block b-textobiblico">
+            <span class="label">Texto bíblico y su aplicación</span>
+            Hebreos 13:5, 6 promete "nunca te dejaré y jamás te abandonaré", y por eso puedo decir "Jehová es mi ayudante, no tendré miedo". Esto me enseña que la meta de leer este libro no es solo aprender datos, sino recordar cada día que no enfrento mis miedos sola.
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="reflexion">
+    <h3>Reflexión de la semana</h3>
+    <p>Esta semana, el Alfarero y el valor de Jesús cuentan, en el fondo, la misma historia. Jeremías nos recuerda que Jehová nunca deja de trabajar la arcilla, aunque esté deformada, aunque parezca "inútil" cambiar; y Jesús nos muestra que ese mismo Dios que moldea también acompaña, incluso cuando el camino da miedo. No hay contradicción entre sentirte una vasija estropeada y, al mismo tiempo, ser llamada a ser valiente: son dos caras de la misma confianza. No se trata de exigirte una versión perfecta de ti misma antes de avanzar, sino de dejarte moldear un poco cada día y dar el siguiente paso, aunque tiemble la voz. Que esta semana, cada vez que sientas que "es inútil" o que te falta valor, recuerdes que el Alfarero sigue teniendo las manos puestas sobre ti, y que no estás caminando ese proceso sola.</p>
+  </div>
+
+  <footer>
+    Guía personal de comentarios · 20-26 de julio de 2026 · Preparada con Claude a partir de jw.org
+  </footer>
+
+<script>
+  var repasoOn = false;
+  var allOpen = false;
+
+  function toggleCard(id){
+    var card = document.getElementById(id);
+    if(!card) return false;
+    if(card.className.indexOf('open') === -1){
+      card.className += ' open';
+    } else {
+      card.className = card.className.replace(' open','');
+    }
+    return false;
+  }
+
+  function openCard(id){
+    var card = document.getElementById(id);
+    if(!card) return false;
+    if(card.className.indexOf('open') === -1){
+      card.className += ' open';
+    }
+    return false;
+  }
+
+  function getAllCards(){
+    return document.getElementsByClassName('card');
+  }
+
+  function toggleExpandAll(){
+    var cards = getAllCards();
+    var i;
+    allOpen = !allOpen;
+    for(i=0;i<cards.length;i++){
+      if(allOpen){
+        if(cards[i].className.indexOf('open') === -1){ cards[i].className += ' open'; }
+      } else {
+        cards[i].className = cards[i].className.replace(' open','');
+      }
+    }
+    var btn = document.getElementById('btnExpand');
+    if(btn){ btn.innerHTML = allOpen ? 'Contraer todo' : 'Expandir todo'; }
+    return false;
+  }
+
+  function toggleRepaso(){
+    repasoOn = !repasoOn;
+    var cards = getAllCards();
+    var i;
+    for(i=0;i<cards.length;i++){
+      cards[i].className = cards[i].className.replace(' open','');
+    }
+    allOpen = false;
+    var btnE = document.getElementById('btnExpand');
+    if(btnE){ btnE.innerHTML = 'Expandir todo'; }
+
+    var btn = document.getElementById('btnRepaso');
+    if(btn){
+      if(repasoOn){
+        btn.className = 'btn active';
+        btn.innerHTML = '🧠 Repaso activado';
+      } else {
+        btn.className = 'btn';
+        btn.innerHTML = '🧠 Modo repaso';
+      }
+    }
+    return false;
+  }
+
+  function toggleIndex(){
+    var body = document.getElementById('indexBody');
+    if(!body) return false;
+    if(body.className.indexOf('open') === -1){
+      body.className += ' open';
+    } else {
+      body.className = body.className.replace(' open','');
+    }
+    return false;
+  }
+
+  function goTo(id){
+    openCard(id);
+    var el = document.getElementById(id);
+    if(el && el.scrollIntoView){
+      window.setTimeout(function(){
+        el.scrollIntoView({behavior:'smooth', block:'start'});
+      },80);
+    }
+    return false;
+  }
+
+  window.onload = function(){
+    // estado inicial: todo cerrado, listo para usar
+  };
+</script>
+
+</body>
+</html>
